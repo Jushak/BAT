@@ -56,11 +56,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GameScreen.xaml">
+    <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\Faction.cs" />
+    <Compile Include="Models\Faith.cs" />
+    <Compile Include="Models\GameInfo.cs" />
+    <Compile Include="Models\GameInfoBase.cs" />
+    <Compile Include="Models\God.cs" />
+    <Compile Include="Models\Leader.cs" />
+    <Compile Include="Views\NotImplementedDialog.xaml.cs">
+      <DependentUpon>NotImplementedDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Optionsdialog.xaml.cs">
+      <DependentUpon>Optionsdialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\DiplomacyScreen.xaml.cs">
+      <DependentUpon>DiplomacyScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\ExplorationScreen.xaml.cs">
+      <DependentUpon>ExplorationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\OverviewScreen.xaml.cs">
+      <DependentUpon>OverviewScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\TradeScreen.xaml.cs">
+      <DependentUpon>TradeScreen.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\NotImplementedDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Mainmenu.xaml">
+    <Page Include="Views\Optionsdialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\DiplomacyScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\ExplorationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\FaithScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mainmenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,20 +113,38 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameScreen.xaml.cs">
+    <Compile Include="Views\GameSubViews\FaithScreen.xaml.cs">
+      <DependentUpon>FaithScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameScreen.xaml.cs">
       <DependentUpon>GameScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mainmenu.xaml.cs">
+    <Compile Include="Views\Mainmenu.xaml.cs">
       <DependentUpon>Mainmenu.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\MilitiaScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\OverviewScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\TradeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\MilitiaScreen.xaml.cs">
+      <DependentUpon>MilitiaScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

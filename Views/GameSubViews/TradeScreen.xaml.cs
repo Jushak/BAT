@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BAT_WPF
+namespace BAT_WPF.Views
 {
     /// <summary>
-    /// Interaction logic for GameScreen.xaml
+    /// Interaction logic for TradeScreen.xaml
     /// </summary>
-    public partial class GameScreen : Page
+    public partial class TradeScreen : Page
     {
-        public GameScreen()
+        public TradeScreen()
         {
             InitializeComponent();
         }

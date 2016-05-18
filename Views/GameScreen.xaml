@@ -1,0 +1,72 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:Models="clr-namespace:BAT_WPF.Models" x:Class="BAT_WPF.GameScreen" 
+      mc:Ignorable="d" 
+      d:DesignHeight="640" d:DesignWidth="860"
+      Background="Black"
+	Title="Game Screen">
+    
+    <Page.DataContext>
+        <Models:GameInfo/>
+    </Page.DataContext>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="30" Background="Khaki">
+            <TextBlock Margin="5" Text="{Binding FactionName}" ></TextBlock>
+            <Button x:Name="BtnOptions" HorizontalAlignment="Right" Margin="0,5,5,5" Click="BtnOptions_Click" Content="Options"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="TxtSeason" Margin="5" Text="{Binding Season}" />
+                <Label>in</Label>
+                <TextBlock x:Name="TxtYear" Margin="5" Text="{Binding Year}" ><Run Text="B.A."/></TextBlock>
+            </StackPanel>
+        </Grid>
+        <DockPanel DockPanel.Dock="Bottom" Height="150" Background="Khaki">
+            <DockPanel DockPanel.Dock="Top" Height="30" Width="740" Background="Aqua">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Goods:"/>
+                        <TextBlock Margin="5" Text="{Binding Goods}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Population:"/>
+                        <TextBlock Margin="5" Text="{Binding Population}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Food:"/>
+                        <TextBlock Margin="5" Text="{Binding Food}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Warriors:"/>
+                        <TextBlock Margin="5" Text="{Binding Warriors}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Magic:"/>
+                        <TextBlock Margin="5" Text="{Binding Magic}"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+            <Grid Height="120" Width="740" Background="Beige">
+                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Council portraits here!"/></TextBlock>
+            </Grid>
+        </DockPanel>
+        <Grid DockPanel.Dock="Left" Width="60" Background="Khaki">
+            <Button Name="BtnPass" VerticalAlignment="Top" HorizontalAlignment="Center" Click="BtnPass_Click">Pass</Button>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="BtnDiplomacy" Click="BtnDiplomacy_Click" Content="Diplomacy"/>
+                <Button x:Name="BtnTrade" Click="BtnTrade_Click" Content="Trade"/>
+                <Button x:Name="BtnMilitia" Click="BtnMilitia_Click" Content="Militia"/>
+                <Button x:Name="BtnOverview" Click="BtnOverview_Click" Content="Overview"/>
+                <Button x:Name="BtnFaith" Click="BtnFaith_Click" Content="Faith"/>
+                <Button x:Name="BtnExploration" Click="BtnExploration_Click" Content="Exploration"/>
+            </StackPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Right" Width="60" Background="Khaki"/>
+        <Grid>
+            <Frame x:Name="ViewsFrame"/>
+        </Grid>
+
+    </DockPanel>
+</Page>

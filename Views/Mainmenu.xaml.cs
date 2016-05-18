@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BAT_WPF.Views;
+using BAT_WPF.Models;
 
 namespace BAT_WPF
 {
@@ -33,7 +35,10 @@ namespace BAT_WPF
             // 1. New game "flowchart" for pre-game decisions for your faction.
             // 2. Faction data generation based on decisions.
             // 3. Generate faction noble/leader pool
-            GameScreen game = new GameScreen();
+
+            // TEMP: Load up placeholder session for now.
+            GameInfo gameInfo = new GameInfo();
+            GameScreen game = new GameScreen( gameInfo );
             NavigationService.Navigate(game);
         }
 
@@ -44,7 +49,11 @@ namespace BAT_WPF
             // 1. Save file creation.
             // 2. Load file dialogue.
             // 3. Save file parsing.
-            GameScreen game = new GameScreen();
+
+            // TEMP: Load up placeholder session for now.
+            GameInfo gameInfo = new GameInfo();
+            DataContext = gameInfo;
+            GameScreen game = new GameScreen( gameInfo );
             NavigationService.Navigate(game);
         }
 
@@ -55,6 +64,8 @@ namespace BAT_WPF
             // 1. Options page.
             // 2. Options file creation.
             // 3. Save/load options.
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
         }
 
         // Exit the application.
