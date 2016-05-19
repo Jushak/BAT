@@ -18,7 +18,7 @@ namespace BAT_WPF.Views
     /// <summary>
     /// Interaction logic for ExplorationScreen.xaml
     /// </summary>
-    public partial class ExplorationScreen : Page
+    public partial class ExplorationScreen : UserControl
     {
         public ExplorationScreen()
         {

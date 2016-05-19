@@ -18,7 +18,7 @@ namespace BAT_WPF.Views
     /// <summary>
     /// Interaction logic for FaithScreen.xaml
     /// </summary>
-    public partial class FaithScreen : Page
+    public partial class FaithScreen : UserControl
     {
         public FaithScreen()
         {

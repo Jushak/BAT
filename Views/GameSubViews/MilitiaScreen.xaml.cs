@@ -18,7 +18,7 @@ namespace BAT_WPF
     /// <summary>
     /// Interaction logic for MilitiaScreen.xaml
     /// </summary>
-    public partial class MilitiaScreen : Page
+    public partial class MilitiaScreen : UserControl
     {
         public MilitiaScreen()
         {

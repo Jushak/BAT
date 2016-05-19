@@ -18,7 +18,7 @@ namespace BAT_WPF.Views
     /// <summary>
     /// Interaction logic for OverviewScreen.xaml
     /// </summary>
-    public partial class OverviewScreen : Page
+    public partial class OverviewScreen : UserControl
     {
         public OverviewScreen()
         {

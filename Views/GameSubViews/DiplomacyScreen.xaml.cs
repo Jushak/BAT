@@ -18,7 +18,7 @@ namespace BAT_WPF.Views
     /// <summary>
     /// Interaction logic for DiplomacyScreen.xaml
     /// </summary>
-    public partial class DiplomacyScreen : Page
+    public partial class DiplomacyScreen : UserControl
     {
         public DiplomacyScreen()
         {

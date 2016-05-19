@@ -20,16 +20,15 @@ namespace BAT_WPF
     /// <summary>
     /// Interaction logic for GameScreen.xaml
     /// </summary>
-    public partial class GameScreen : Page
+    public partial class GameScreen : UserControl
     {
         GameInfo gameInfo;
 
         public GameScreen( GameInfo game )
         {
             InitializeComponent();
-            Page current = new OverviewScreen();
-            ViewsFrame.Content = current;
             gameInfo = game;
+            ViewsBorder.Child = new OverviewScreen();
         }
 
         // Open Options-dialog
@@ -42,43 +41,43 @@ namespace BAT_WPF
         // Change current frame page to Diplomacy screen.
         private void BtnDiplomacy_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new DiplomacyScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new DiplomacyScreen();
+            ViewsBorder.Child = current;
         }
 
         // Change current frame page to Trade screen.
         private void BtnTrade_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new TradeScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new TradeScreen();
+            ViewsBorder.Child = current;
         }
 
         // Change current frame page to Militia screen.
         private void BtnMilitia_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new MilitiaScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new MilitiaScreen();
+            ViewsBorder.Child = current;
         }
 
         // Change current frame page to Overview screen.
         private void BtnOverview_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new OverviewScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new OverviewScreen();
+            ViewsBorder.Child = current;
         }
 
         // Change current frame page to Faith screen.
         private void BtnFaith_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new FaithScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new FaithScreen();
+            ViewsBorder.Child = current;
         }
 
         // Change current frame page to Exploration screen.
         private void BtnExploration_Click(object sender, RoutedEventArgs e)
         {
-            Page current = new ExplorationScreen();
-            ViewsFrame.Content = current;
+            UserControl current = new ExplorationScreen();
+            ViewsBorder.Child = current;
         }
 
         private void BtnPass_Click(object sender, RoutedEventArgs e)

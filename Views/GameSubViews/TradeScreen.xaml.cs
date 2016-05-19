@@ -18,7 +18,7 @@ namespace BAT_WPF.Views
     /// <summary>
     /// Interaction logic for TradeScreen.xaml
     /// </summary>
-    public partial class TradeScreen : Page
+    public partial class TradeScreen : UserControl
     {
         public TradeScreen()
         {

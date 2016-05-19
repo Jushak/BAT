@@ -22,8 +22,7 @@ namespace BAT_WPF
         public MainWindow()
         {
             InitializeComponent();
-            Mainmenu menu = new Mainmenu();
-            MainFrame.Content = menu;
+            MainBorder.Child = new Mainmenu(MainBorder);
         }
     }
 }

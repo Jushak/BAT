@@ -1,4 +1,4 @@
-﻿<Page
+﻿<UserControl
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,12 +6,11 @@
        xmlns:Models="clr-namespace:BAT_WPF.Models" x:Class="BAT_WPF.GameScreen" 
       mc:Ignorable="d" 
       d:DesignHeight="640" d:DesignWidth="860"
-      Background="Black"
-	Title="Game Screen">
+      Background="Black">
     
-    <Page.DataContext>
+    <UserControl.DataContext>
         <Models:GameInfo/>
-    </Page.DataContext>
+    </UserControl.DataContext>
 
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="30" Background="Khaki">
@@ -65,8 +64,8 @@
         </Grid>
         <Grid DockPanel.Dock="Right" Width="60" Background="Khaki"/>
         <Grid>
-            <Frame x:Name="ViewsFrame"/>
+            <Border x:Name="ViewsBorder"/>
         </Grid>
 
     </DockPanel>
-</Page>
+</UserControl>

@@ -8,6 +8,6 @@
         Title="Beyond Apocalyptic Times" Height="671" Width="868">
         
     <Grid>
-        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="860" Background="Black"/>
+        <Border x:Name="MainBorder" HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="860" Background="Black"/>
     </Grid>
 </Window>

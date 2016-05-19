@@ -20,11 +20,12 @@ namespace BAT_WPF
     /// <summary>
     /// Interaction logic for Mainmenu.xaml
     /// </summary>
-    public partial class Mainmenu : Page
-    {    
-
-        public Mainmenu()
+    public partial class Mainmenu : UserControl
+    {
+        Border _parentBorder;
+        public Mainmenu(Border parentBorder)
         {
+            _parentBorder = parentBorder;
             InitializeComponent();
         }
 
@@ -39,7 +40,8 @@ namespace BAT_WPF
             // TEMP: Load up placeholder session for now.
             GameInfo gameInfo = new GameInfo();
             GameScreen game = new GameScreen( gameInfo );
-            NavigationService.Navigate(game);
+            //NavigationService.Navigate(game);
+            _parentBorder.Child = game;
         }
 
         // Load an existing game.
@@ -54,7 +56,8 @@ namespace BAT_WPF
             GameInfo gameInfo = new GameInfo();
             DataContext = gameInfo;
             GameScreen game = new GameScreen( gameInfo );
-            NavigationService.Navigate(game);
+            //NavigationService.Navigate(game);
+            _parentBorder.Child = game;
         }
 
         // Navigate to options page.
