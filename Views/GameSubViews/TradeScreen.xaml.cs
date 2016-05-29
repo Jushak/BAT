@@ -15,6 +15,13 @@ using System.Windows.Shapes;
 
 namespace BAT_WPF.Views
 {
+    /*
+     * TODO:
+     * Scrollable map to show trade relations
+     * List of trade missions with related options
+     * List of trade-able curiosities & magic items
+     */
+
     /// <summary>
     /// Interaction logic for TradeScreen.xaml
     /// </summary>

@@ -15,6 +15,13 @@ using System.Windows.Shapes;
 
 namespace BAT_WPF.Views
 {
+    /*
+     * TODO:
+     * Show extra information about the faction
+     * See & change the number of specialist jobs (traders, hunters, crafters etc.)
+     * Reorganize faction council
+     */
+
     /// <summary>
     /// Interaction logic for OverviewScreen.xaml
     /// </summary>

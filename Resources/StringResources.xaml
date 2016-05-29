@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="gameTitle">Beyond Apocalyptic Times</system:String>
+    <system:String x:Key="btnNewGame">Start new game</system:String>
+    <system:String x:Key="btnLoadGame">Load game</system:String>
+    <system:String x:Key="btnOptions">Options</system:String>
+    <system:String x:Key="btnExit">Exit</system:String>
+    <system:String x:Key="btnDiplomacy">Diplomacy</system:String>
+    <system:String x:Key="btnMilitia">Militia</system:String>
+    <system:String x:Key="btnExploration">Exploration</system:String>
+    <system:String x:Key="btnFaith">Faith</system:String>
+    <system:String x:Key="btnOverview">Overview</system:String>
+    <system:String x:Key="btnTrade">Trade</system:String>
+    <system:String x:Key="population">Population:</system:String>
+    <system:String x:Key="goods">Goods:</system:String>
+    <system:String x:Key="good">Food:</system:String>
+    <system:String x:Key="warriors">Warriors:</system:String>
+    <system:String x:Key="magic">Magic:</system:String>
+    <system:String x:Key="btnBack">Back</system:String>
+    <system:String x:Key="btnNext">Next</system:String>
+    <system:String x:Key="lblEnterFacName">Enter faction name</system:String>
+    <system:String x:Key="btnStartGame">Start game</system:String>
+    <system:String x:Key="txtIntroduction">
+        Apocalypse.
+        
+        The end of the world as know it.
+        
+        While the accounts of what exactly happened during the Apocalyptic Times differ wildly from
+        culture to culture, there is one thing that all sources agree with: people truly believed
+        that the end of mankind had come.
+        
+        While prayers to old gods seemingly fell to deaf ears, it was the new gods that brought
+        the light of salvation in mankind's darkest hour. Whether the old gods were angry,
+        impotent, non-existent or simply now manifested in new forms to lead mankind to new era
+        is a debate for Godspeakers. For the common man the only thing that matters is that we
+        survived.        
+    </system:String>
+</ResourceDictionary>

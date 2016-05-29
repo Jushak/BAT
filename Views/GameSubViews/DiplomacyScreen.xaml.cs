@@ -15,6 +15,15 @@ using System.Windows.Shapes;
 
 namespace BAT_WPF.Views
 {
+    /* 
+     * TODO:
+     * List of other factions
+     * Info-box to show short description of currently selected faction
+     * List of diplomacy actions & related choices
+     * Scrollable map to show the world surrounding player's faction
+     */
+
+
     /// <summary>
     /// Interaction logic for DiplomacyScreen.xaml
     /// </summary>

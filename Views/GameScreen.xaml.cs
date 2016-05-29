@@ -22,12 +22,16 @@ namespace BAT_WPF
     /// </summary>
     public partial class GameScreen : UserControl
     {
-        GameInfo gameInfo;
+        GameInfo gameInfo_;
+        Border parentBorder_;
 
-        public GameScreen( GameInfo game )
+        public GameScreen( GameInfo game, Border parent )
         {
             InitializeComponent();
-            gameInfo = game;
+            gameInfo_ = game;
+            parentBorder_ = parent;
+
+            DataContext = game;
             ViewsBorder.Child = new OverviewScreen();
         }
 
@@ -82,7 +86,7 @@ namespace BAT_WPF
 
         private void BtnPass_Click(object sender, RoutedEventArgs e)
         {
-            gameInfo.advanceSeason();
+            gameInfo_.advanceSeason();
         }
     }
 }

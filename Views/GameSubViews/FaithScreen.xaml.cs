@@ -15,6 +15,13 @@ using System.Windows.Shapes;
 
 namespace BAT_WPF.Views
 {
+    /*
+     * TODO:
+     * List of gods / saints / other holy figures of the player faction's religion
+     * Building / dismantling of religious buildings
+     * Ritual magic, sacrifices etc.
+     */
+
     /// <summary>
     /// Interaction logic for FaithScreen.xaml
     /// </summary>

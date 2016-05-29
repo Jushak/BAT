@@ -13,23 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BAT_WPF
+namespace BAT_WPF.Views
 {
-    /*
-     * TODO:
-     * Building / dismantling military buildings
-     * Managing patrol strengths
-     * Recruiting / dismissing elite warriors
-     * Military decisions (who fights? (Only) free (wo)men? Slaves? Undead?
-     * Show more options depending on faith / gods?
-     */
-
     /// <summary>
-    /// Interaction logic for MilitiaScreen.xaml
+    /// Interaction logic for IntroductionScreen.xaml
     /// </summary>
-    public partial class MilitiaScreen : UserControl
+    public partial class IntroductionScreen : UserControl
     {
-        public MilitiaScreen()
+        public IntroductionScreen()
         {
             InitializeComponent();
         }

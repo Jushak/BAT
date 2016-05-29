@@ -11,38 +11,57 @@ namespace BAT_WPF.Models
 {
     public class GameInfo : GameInfoBase
     {
-        UInt16 year;
-        public Seasons season;
-        string factionName;
-        List<Leader> leaders;
-        List<Leader> councilors;
-        UInt16 population;
-        UInt16 goods;
-        UInt16 food;
-        UInt16 warriors;
-        UInt16 magic;
-        Int16 genderDominance;
+        ushort year_;
+        public Seasons season_;
+        string factionName_;
+        Faith factionFaith_;
+        List<Leader> leaders_;
+        List<Leader> councilors_;
+        UInt16 population_;
+        UInt16 goods_;
+        UInt16 food_;
+        UInt16 warriors_;
+        UInt16 magic_;
+        Int16 genderDominance_;
 
         #region Constructors
         public GameInfo()
         {
-            year = 100;
-            Season = Seasons.Seeding;
-            FactionName = "TestFaction";
-            leaders = new List<Leader>();
-            councilors = new List<Leader>();
-            population = 800;
-            goods = 50;
-            food = 800;
-            warriors = 10;
-            magic = 3;
-            genderDominance = 50;
+            year_ = 100;
+            season_ = Seasons.Seeding;
+            factionName_ = "TestFaction";
+            factionFaith_ = new Faith();
+            leaders_ = new List<Leader>();
+            councilors_ = new List<Leader>();
+            population_ = 800;
+            goods_ = 50;
+            food_ = 800;
+            warriors_ = 10;
+            magic_ = 3;
+            genderDominance_ = 50;
         }
 
         // Constructor for use with 
         public GameInfo(string filename)
         {
             // TODO: Read data from savefile.
+        }
+
+        // Debug constructor.
+        public GameInfo(string name, ushort year)
+        {
+            year_ = year;
+            season_ = Seasons.Seeding;
+            factionName_ = name;
+            factionFaith_ = new Faith();
+            leaders_ = new List<Leader>();
+            councilors_ = new List<Leader>();
+            population_ = 800;
+            goods_ = 50;
+            food_ = 800;
+            warriors_ = 10;
+            magic_ = 3;
+            genderDominance_ = 50;
         }
         #endregion
 
@@ -51,12 +70,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return year;
+                return year_;
             }
 
             set
             {
-                year = value;
+                year_ = value;
             }
         }
 
@@ -64,12 +83,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return factionName;
+                return factionName_;
             }
 
             set
             {
-                factionName = value;
+                factionName_ = value;
             }
         }
 
@@ -77,12 +96,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return leaders;
+                return leaders_;
             }
 
             set
             {
-                leaders = value;
+                leaders_ = value;
             }
         }
 
@@ -90,12 +109,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return councilors;
+                return councilors_;
             }
 
             set
             {
-                councilors = value;
+                councilors_ = value;
             }
         }
 
@@ -103,12 +122,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return population;
+                return population_;
             }
 
             set
             {
-                population = value;
+                population_ = value;
             }
         }
 
@@ -116,12 +135,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return goods;
+                return goods_;
             }
 
             set
             {
-                goods = value;
+                goods_ = value;
             }
         }
 
@@ -129,12 +148,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return food;
+                return food_;
             }
 
             set
             {
-                food = value;
+                food_ = value;
             }
         }
 
@@ -142,12 +161,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return warriors;
+                return warriors_;
             }
 
             set
             {
-                warriors = value;
+                warriors_ = value;
             }
         }
 
@@ -155,12 +174,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return magic;
+                return magic_;
             }
 
             set
             {
-                magic = value;
+                magic_ = value;
             }
         }
 
@@ -168,12 +187,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return genderDominance;
+                return genderDominance_;
             }
 
             set
             {
-                genderDominance = value;
+                genderDominance_ = value;
             }
         }
 
@@ -181,12 +200,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return season;
+                return season_;
             }
 
             set
             {
-                season = value;
+                season_ = value;
             }
         }
         #endregion
@@ -198,29 +217,29 @@ namespace BAT_WPF.Models
         {
             // TODO:
             // 1. Random event generation.
-            // 2. Apply changes to population etc.
-            switch(season)
+            // 2. Apply proper calculations to changes to population etc.
+            switch(season_)
             {
                 case Seasons.Seeding:
-                    season = Seasons.Growing;
+                    season_ = Seasons.Growing;
                     break;
                 case Seasons.Growing:
-                    season = Seasons.Harvesting;
+                    season_ = Seasons.Harvesting;
                     break;
                 case Seasons.Harvesting:
-                    season = Seasons.Decaying;
+                    season_ = Seasons.Decaying;
                     break;
                 case Seasons.Decaying:
-                    season = Seasons.Sleeping;
+                    season_ = Seasons.Sleeping;
                     break;
                 case Seasons.Sleeping:
-                    season = Seasons.Seeding;
-                    year++;
+                    season_ = Seasons.Seeding;
+                    year_++;
                     this.NotifyPropertyChanged("year");
                     break;
             }
             this.NotifyPropertyChanged("season");
-            population += 50;
+            population_ += 50;
             this.NotifyPropertyChanged("population");
 
         }

@@ -8,13 +8,13 @@
       Background="Gray">
 
     <StackPanel Orientation="Vertical">
-        <Label FontSize="40" HorizontalAlignment="Center">Beyond Apocalyptic Times</Label>
+        <Label FontSize="40" HorizontalAlignment="Center" Content="{DynamicResource ResourceKey=gameTitle}" />
         <Grid>
             <StackPanel Width="300">
-                <Button Name="Btn_StartNew" Click="Btn_StartNew_Click">Start new game</Button>
-                <Button Name="Btn_LoadGame" Click="Btn_LoadGame_Click">Load game</Button>
-                <Button Name="Btn_Options" Click="Btn_Options_Click">Options</Button>
-                <Button Name="Btn_Exit" Click="Btn_Exit_Click">Exit</Button>
+                <Button Name="Btn_StartNew" Click="Btn_StartNew_Click" Content="{DynamicResource ResourceKey=btnNewGame}" />
+                <Button Name="Btn_LoadGame" Click="Btn_LoadGame_Click" Content="{DynamicResource ResourceKey=btnLoadGame}" />
+                <Button Name="Btn_Options" Click="Btn_Options_Click" Content="{DynamicResource ResourceKey=btnOptions}" />
+                <Button Name="Btn_Exit" Click="Btn_Exit_Click" Content="{DynamicResource ResourceKey=btnExit}" />
             </StackPanel>
         </Grid>
     </StackPanel>

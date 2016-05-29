@@ -15,6 +15,13 @@ using System.Windows.Shapes;
 
 namespace BAT_WPF.Views
 {
+    /*
+     * TODO:
+     * Scrollable exploration map
+     * Sending an expedition and relevant options
+     * 
+     */
+
     /// <summary>
     /// Interaction logic for ExplorationScreen.xaml
     /// </summary>

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Globalization;
+using System.Windows.Markup;
+using System.Threading;
 
 namespace BAT_WPF
 {
@@ -22,6 +25,18 @@ namespace BAT_WPF
         public MainWindow()
         {
             InitializeComponent();
+            this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag);
+            var culture = CultureInfo.CurrentCulture.Name;
+            ResourceDictionary dict = new ResourceDictionary();
+            switch (Thread.CurrentThread.CurrentCulture.ToString())
+            {
+                default:
+                    dict.Source = new Uri("..\\Resources\\StringResources.xaml",
+                                    UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dict);
+    
             MainBorder.Child = new Mainmenu(MainBorder);
         }
     }

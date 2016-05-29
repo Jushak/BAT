@@ -22,10 +22,10 @@ namespace BAT_WPF
     /// </summary>
     public partial class Mainmenu : UserControl
     {
-        Border _parentBorder;
-        public Mainmenu(Border parentBorder)
+        Border parentBorder_;
+        public Mainmenu(Border parent)
         {
-            _parentBorder = parentBorder;
+            parentBorder_ = parent;
             InitializeComponent();
         }
 
@@ -38,10 +38,12 @@ namespace BAT_WPF
             // 3. Generate faction noble/leader pool
 
             // TEMP: Load up placeholder session for now.
-            GameInfo gameInfo = new GameInfo();
-            GameScreen game = new GameScreen( gameInfo );
-            //NavigationService.Navigate(game);
-            _parentBorder.Child = game;
+
+            FactionSetup setup = new FactionSetup( parentBorder_ );
+
+            //GameInfo gameInfo = new GameInfo();
+            //GameScreen game = new GameScreen( gameInfo, _parentBorder );
+            parentBorder_.Child = setup;
         }
 
         // Load an existing game.
@@ -55,9 +57,9 @@ namespace BAT_WPF
             // TEMP: Load up placeholder session for now.
             GameInfo gameInfo = new GameInfo();
             DataContext = gameInfo;
-            GameScreen game = new GameScreen( gameInfo );
+            GameScreen game = new GameScreen( gameInfo, parentBorder_ );
             //NavigationService.Navigate(game);
-            _parentBorder.Child = game;
+            parentBorder_.Child = game;
         }
 
         // Navigate to options page.

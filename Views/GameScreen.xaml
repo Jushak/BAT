@@ -26,23 +26,23 @@
             <DockPanel DockPanel.Dock="Top" Height="30" Width="740" Background="Aqua">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Goods:"/>
+                        <Label Content="{DynamicResource ResourceKey=goods}"/>
                         <TextBlock Margin="5" Text="{Binding Goods}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Population:"/>
+                        <Label Content="{DynamicResource ResourceKey=population}"/>
                         <TextBlock Margin="5" Text="{Binding Population}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Food:"/>
+                        <Label Content="{DynamicResource ResourceKey=food}"/>
                         <TextBlock Margin="5" Text="{Binding Food}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Warriors:"/>
+                        <Label Content="{DynamicResource ResourceKey=warriors}"/>
                         <TextBlock Margin="5" Text="{Binding Warriors}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Magic:"/>
+                        <Label Content="{DynamicResource ResourceKey=magic}"/>
                         <TextBlock Margin="5" Text="{Binding Magic}"/>
                     </StackPanel>
                 </StackPanel>
@@ -54,12 +54,12 @@
         <Grid DockPanel.Dock="Left" Width="60" Background="Khaki">
             <Button Name="BtnPass" VerticalAlignment="Top" HorizontalAlignment="Center" Click="BtnPass_Click">Pass</Button>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="BtnDiplomacy" Click="BtnDiplomacy_Click" Content="Diplomacy"/>
-                <Button x:Name="BtnTrade" Click="BtnTrade_Click" Content="Trade"/>
-                <Button x:Name="BtnMilitia" Click="BtnMilitia_Click" Content="Militia"/>
-                <Button x:Name="BtnOverview" Click="BtnOverview_Click" Content="Overview"/>
-                <Button x:Name="BtnFaith" Click="BtnFaith_Click" Content="Faith"/>
-                <Button x:Name="BtnExploration" Click="BtnExploration_Click" Content="Exploration"/>
+                <Button x:Name="BtnDiplomacy" Click="BtnDiplomacy_Click" Content="{DynamicResource ResourceKey=btnDiplomacy}"/>
+                <Button x:Name="BtnTrade" Click="BtnTrade_Click" Content="{DynamicResource ResourceKey=btnTrade}"/>
+                <Button x:Name="BtnMilitia" Click="BtnMilitia_Click" Content="{DynamicResource ResourceKey=btnMilitia}"/>
+                <Button x:Name="BtnOverview" Click="BtnOverview_Click" Content="{DynamicResource ResourceKey=btnOverview}"/>
+                <Button x:Name="BtnFaith" Click="BtnFaith_Click" Content="{DynamicResource ResourceKey=btnFaith}"/>
+                <Button x:Name="BtnExploration" Click="BtnExploration_Click" Content="{DynamicResource ResourceKey=btnExploration}"/>
             </StackPanel>
         </Grid>
         <Grid DockPanel.Dock="Right" Width="60" Background="Khaki"/>

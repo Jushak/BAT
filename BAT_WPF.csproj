@@ -63,6 +63,9 @@
     <Compile Include="Models\GameInfoBase.cs" />
     <Compile Include="Models\God.cs" />
     <Compile Include="Models\Leader.cs" />
+    <Compile Include="Views\FactionSetup.xaml.cs">
+      <DependentUpon>FactionSetup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NotImplementedDialog.xaml.cs">
       <DependentUpon>NotImplementedDialog.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,20 @@
     <Compile Include="Views\GameSubViews\TradeScreen.xaml.cs">
       <DependentUpon>TradeScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SetupSubViews\FinalizeScreen.xaml.cs">
+      <DependentUpon>FinalizeScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetupSubViews\IntroductionScreen.xaml.cs">
+      <DependentUpon>IntroductionScreen.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Resources\StringResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FactionSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NotImplementedDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +155,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SetupSubViews\FinalizeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetupSubViews\IntroductionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -175,9 +200,7 @@
   <ItemGroup>
     <Resource Include="BAT.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
