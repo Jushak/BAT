@@ -9,6 +9,7 @@
     <Grid Background="Khaki">
         <Button Name="BtnClose" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="BtnClose_Click">X</Button>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Name="BtnMenu" Margin="20" Click="BtnMenu_Click" >Main menu</Button>
             <Button Name="BtnSave" Margin="20" Click="BtnSave_Click">Save</Button>
             <Button Name="BtnLoad" Margin="20" Click="BtnLoad_Click">Load</Button>
             <Button Name="BtnExit" Margin="20" Click="BtnExit_Click">Exit</Button>

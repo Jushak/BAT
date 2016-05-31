@@ -9,11 +9,16 @@ public enum Seasons { Seeding, Growing, Harvesting, Decaying, Sleeping };
 
 namespace BAT_WPF.Models
 {
+    /*
+     * Model for game-specific info such as current year, season, player faction's name etc.
+     * Includes both values shown in different sections of the UI as well as hidden info.
+     */
     public class GameInfo : GameInfoBase
     {
         ushort year_;
         public Seasons season_;
         string factionName_;
+        Boolean firstActionUsed;
         Faith factionFaith_;
         List<Leader> leaders_;
         List<Leader> councilors_;
@@ -31,6 +36,7 @@ namespace BAT_WPF.Models
             season_ = Seasons.Seeding;
             factionName_ = "TestFaction";
             factionFaith_ = new Faith();
+            firstActionUsed = false;
             leaders_ = new List<Leader>();
             councilors_ = new List<Leader>();
             population_ = 800;
@@ -208,16 +214,27 @@ namespace BAT_WPF.Models
                 season_ = value;
             }
         }
+
+        public bool FirstActionUsed
+        {
+            get
+            {
+                return firstActionUsed;
+            }
+
+            set
+            {
+                firstActionUsed = value;
+            }
+        }
         #endregion
 
         #region Operations
 
-        // Function that moves the game forward to next season.
+        // A helper function that moves the game forward to the next season and where necessary next year.
         public void advanceSeason()
         {
-            // TODO:
-            // 1. Random event generation.
-            // 2. Apply proper calculations to changes to population etc.
+            // Move to next season.
             switch(season_)
             {
                 case Seasons.Seeding:
@@ -234,14 +251,14 @@ namespace BAT_WPF.Models
                     break;
                 case Seasons.Sleeping:
                     season_ = Seasons.Seeding;
+                    // New year, advance year count and notify the UI to show it.
                     year_++;
                     this.NotifyPropertyChanged("year");
                     break;
             }
+            // Notify UI of season change and reset action-tracking Boolean to false.
             this.NotifyPropertyChanged("season");
-            population_ += 50;
-            this.NotifyPropertyChanged("population");
-
+            firstActionUsed = false;
         }
 
         #endregion

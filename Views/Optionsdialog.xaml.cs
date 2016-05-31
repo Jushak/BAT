@@ -45,5 +45,15 @@ namespace BAT_WPF.Views
             Window notImplemented = new NotImplementedDialog();
             notImplemented.ShowDialog();
         }
+
+        private void BtnMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        protected virtual void OnNavButtonPressed()
+        {
+
+        }
     }
 }

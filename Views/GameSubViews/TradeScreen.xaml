@@ -8,7 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid Background="Pink">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Trade screen!</TextBlock>
-        
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Trade screen!</TextBlock>
+        <Button Name="BtnTest" Width="80" Height="30">Press me!</Button>
     </Grid>
 </UserControl>

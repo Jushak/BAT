@@ -8,6 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid Background="Cyan">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Diplomacy screen!</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Diplomacy screen!</TextBlock>
+        <Button Name="BtnTest" Width="80" Height="30">Press me!</Button>
     </Grid>
 </UserControl>

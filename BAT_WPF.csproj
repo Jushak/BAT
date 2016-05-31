@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Logic\GameLogic.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Faction.cs" />
     <Compile Include="Models\Faith.cs" />

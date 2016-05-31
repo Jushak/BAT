@@ -8,6 +8,7 @@
       d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid Background="Gold">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Faith screen!</TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Faith screen!</TextBlock>
+        <Button Name="BtnTest" Width="80" Height="30">Press me!</Button>
     </Grid>
 </UserControl>

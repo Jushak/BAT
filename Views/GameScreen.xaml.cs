@@ -14,24 +14,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BAT_WPF.Views;
 using BAT_WPF.Models;
+using BAT_WPF.Logic;
 
 namespace BAT_WPF
-{
+{    
     /// <summary>
     /// Interaction logic for GameScreen.xaml
     /// </summary>
     public partial class GameScreen : UserControl
     {
         GameInfo gameInfo_;
+        GameLogic gameLogic_;
         Border parentBorder_;
 
-        public GameScreen( GameInfo game, Border parent )
+        public GameScreen( GameInfo info, GameLogic logic, Border parent )
         {
             InitializeComponent();
-            gameInfo_ = game;
+            gameInfo_ = info;
+            gameLogic_ = logic;
             parentBorder_ = parent;
 
-            DataContext = game;
+            DataContext = gameInfo_;
             ViewsBorder.Child = new OverviewScreen();
         }
 

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BAT_WPF.Views;
 using BAT_WPF.Models;
+using BAT_WPF.Logic;
 
 namespace BAT_WPF
 {
@@ -37,12 +38,8 @@ namespace BAT_WPF
             // 2. Faction data generation based on decisions.
             // 3. Generate faction noble/leader pool
 
-            // TEMP: Load up placeholder session for now.
-
+            // TEMP: Load up unfinished faction setup for now.
             FactionSetup setup = new FactionSetup( parentBorder_ );
-
-            //GameInfo gameInfo = new GameInfo();
-            //GameScreen game = new GameScreen( gameInfo, _parentBorder );
             parentBorder_.Child = setup;
         }
 
@@ -56,9 +53,9 @@ namespace BAT_WPF
 
             // TEMP: Load up placeholder session for now.
             GameInfo gameInfo = new GameInfo();
+            GameLogic gameLogic = new GameLogic(gameInfo);
             DataContext = gameInfo;
-            GameScreen game = new GameScreen( gameInfo, parentBorder_ );
-            //NavigationService.Navigate(game);
+            GameScreen game = new GameScreen( gameInfo, gameLogic, parentBorder_ );
             parentBorder_.Child = game;
         }
 
