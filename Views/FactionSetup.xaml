@@ -3,15 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:Models="clr-namespace:BAT_WPF.Models"
              xmlns:local="clr-namespace:BAT_WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="640" d:DesignWidth="860"
              Background="Khaki">
+
+    <UserControl.DataContext>
+        <Models:SetupInfo/>
+    </UserControl.DataContext>
+
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Name="lblFactionName" Text="{Binding FactionName_}" />
         <Border Name="ViewsBorder" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Name="btnBack" Content="{DynamicResource ResourceKey=btnBack}" Click="btnBack_Click" />
             <Button Name="btnNext" Content="{DynamicResource ResourceKey=btnNext}" Click="btnNext_Click" />
         </StackPanel>
+        <Button Name="btnStart" Content="{DynamicResource ResourceKey=btnStartGame}" Click="btnStart_Click" />
     </StackPanel>
 </UserControl>

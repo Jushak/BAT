@@ -31,6 +31,18 @@ namespace BAT_WPF.Models
             DerogatorySingle_ = new List<String>();
             MainGod_ = new God();
         }
+
+        public Faith( string name )
+        {
+            Name_ = name+"'s pantheon";
+            Adjective_ = name + "n";
+            Plural_ = name + "i";
+            DerogatoryAdjective_ = new List<String>();
+            DerogatoryPlural_ = new List<String>();
+            DerogatorySingle_ = new List<String>();
+            MainGod_ = new God(name);
+        }
+
         #endregion
 
         #region Getters and setters

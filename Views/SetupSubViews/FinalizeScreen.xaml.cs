@@ -21,9 +21,15 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class FinalizeScreen : UserControl
     {
-        public FinalizeScreen()
+        public FinalizeScreen( SetupInfo setup )
         {
+            DataContext = setup;
             InitializeComponent();
+        }
+
+        public string GetFactionaName()
+        {
+            return tBoxFacName.Text;
         }
     }
 }

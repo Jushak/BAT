@@ -19,14 +19,21 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class OptionsDialog : Window
     {
-        public OptionsDialog()
+        Border parentBorder_;
+
+        public OptionsDialog( Border parent )
         {
+            parentBorder_ = parent;
             InitializeComponent();
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure? Any unsaved progress will be lost.", "Exit the game? ", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }            
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -48,7 +55,12 @@ namespace BAT_WPF.Views
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure? Any unsaved progress will be lost.", "Return to main menu? ", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                parentBorder_.Child = new Mainmenu(parentBorder_);
+                this.Close();
+            }
         }
 
         protected virtual void OnNavButtonPressed()

@@ -4,16 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BAT_WPF.Views"
+             xmlns:Models="clr-namespace:BAT_WPF.Models"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300"
              Background="Beige">
+
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="500" Width="300">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
             Earlier selections will be shown here!
         </TextBlock>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="{DynamicResource ResourceKey=lblEnterFacName}" />
-            <TextBox Name="tBoxFacName" AcceptsReturn="False" AcceptsTab="False" AllowDrop="False" AutoWordSelection="False" ></TextBox>
+            <TextBox Name="tBoxFacName" AcceptsReturn="False" AcceptsTab="False" AllowDrop="False"
+                     AutoWordSelection="False" MaxLines="1" MaxLength="15" Text="{Binding FactionName_}" ></TextBox>
         </StackPanel>
     </StackPanel>
 </UserControl>

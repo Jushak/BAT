@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BAT_WPF.Models
 {
-    public class GameInfoBase : INotifyPropertyChanged
+    public class InfoBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void NotifyPropertyChanged(string propertyName)

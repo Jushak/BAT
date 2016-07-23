@@ -13,17 +13,34 @@ namespace BAT_WPF.Models
         List<String> combatFeats_;
         List<String> favoredSkills_;
         UInt16 genderSplit_;
+        Boolean priests_;
+        Boolean priestesses_;
 
         #region Constructors
         public God()
             : base("TestGod")
         {
-            Portfolio_ = new List<String>();
-            Titles_ = new List<String>();
-            CombatFeats_ = new List<String>();
-            FavoredSkills_ = new List<String>();
-            UInt16 genderSplit_ = 50;
+            portfolio_ = new List<String>();
+            titles_ = new List<String>();
+            combatFeats_ = new List<String>();
+            favoredSkills_ = new List<String>();
+            genderSplit_ = 50;
+            priests_ = true;
+            priestesses_ = true;
         }
+
+        public God(string name) 
+            : base(name)
+        {
+            portfolio_ = new List<String>();
+            titles_ = new List<String>();
+            combatFeats_ = new List<String>();
+            favoredSkills_ = new List<String>();
+            genderSplit_ = 50;
+            priests_ = true;
+            priestesses_ = true;
+        }
+
         #endregion
 
         #region Getters and setters

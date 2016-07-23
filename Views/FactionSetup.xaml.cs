@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BAT_WPF.Logic;
+using BAT_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,17 +25,21 @@ namespace BAT_WPF.Views
         UInt16 index_;
         List<UserControl> setupControls_;
         Border parentBorder_;
+        SetupInfo setup_;
 
         public FactionSetup( Border parent )
         {
+            setup_ = new SetupInfo();
             setupControls_ = new List<UserControl>();
             setupControls_.Add(new IntroductionScreen());
-            setupControls_.Add(new FinalizeScreen());
+            setupControls_.Add(new FinalizeScreen( setup_ ));
+            DataContext = setup_;
             index_ = 0;
             InitializeComponent();
             ViewsBorder.Child = setupControls_.ElementAt(index_);
             btnBack.IsEnabled = false;
-            btnBack.IsEnabled = false;
+            btnStart.IsEnabled = false;
+            btnStart.Visibility = System.Windows.Visibility.Hidden; 
             parentBorder_ = parent;
         }
 
@@ -47,6 +53,7 @@ namespace BAT_WPF.Views
                 if ( btnNext.IsEnabled == false )
                 {
                     btnNext.IsEnabled = true;
+                    btnStart.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
             ViewsBorder.Child = setupControls_.ElementAt(index_);
@@ -62,9 +69,24 @@ namespace BAT_WPF.Views
                 if (btnBack.IsEnabled == false)
                 {
                     btnBack.IsEnabled = true;
+                    btnStart.IsEnabled = true;
+                    btnStart.Visibility = System.Windows.Visibility.Visible;
                 }
             }
             ViewsBorder.Child = setupControls_.ElementAt(index_);
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            if ( setup_.FactionName_.Equals("") )
+            {
+                setup_.FactionName_ = "PlaceHolderName";
+            }
+            GameInfo gameInfo = new GameInfo( setup_.FactionName_, setup_.Year_ );
+            GameLogic gameLogic = new GameLogic(gameInfo);
+            DataContext = gameInfo;
+            GameScreen game = new GameScreen(gameInfo, gameLogic, parentBorder_);
+            parentBorder_.Child = game;
         }
     }
 }

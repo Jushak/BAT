@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BAT_WPF.Views"
         mc:Ignorable="d"
-        Title="NotImplemented" Height="200" Width="300">
+        Title="NotImplemented" Height="200" Width="300" ResizeMode="NoResize" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterScreen">
     <Grid Background="Khaki">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Margin="20">This feature has not yet been implemented.</TextBlock>

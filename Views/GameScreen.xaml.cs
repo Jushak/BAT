@@ -35,55 +35,55 @@ namespace BAT_WPF
             parentBorder_ = parent;
 
             DataContext = gameInfo_;
-            ViewsBorder.Child = new OverviewScreen();
+            ViewsBorder.Child = new OverviewScreen(gameInfo_);
         }
 
         // Open Options-dialog
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptionsDialog popup = new OptionsDialog();
+            OptionsDialog popup = new OptionsDialog( parentBorder_ );
             popup.ShowDialog();
         }
 
         // Change current frame page to Diplomacy screen.
         private void BtnDiplomacy_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new DiplomacyScreen();
+            UserControl current = new DiplomacyScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 
         // Change current frame page to Trade screen.
         private void BtnTrade_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new TradeScreen();
+            UserControl current = new TradeScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 
         // Change current frame page to Militia screen.
         private void BtnMilitia_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new MilitiaScreen();
+            UserControl current = new MilitiaScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 
         // Change current frame page to Overview screen.
         private void BtnOverview_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new OverviewScreen();
+            UserControl current = new OverviewScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 
         // Change current frame page to Faith screen.
         private void BtnFaith_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new FaithScreen();
+            UserControl current = new FaithScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 
         // Change current frame page to Exploration screen.
         private void BtnExploration_Click(object sender, RoutedEventArgs e)
         {
-            UserControl current = new ExplorationScreen();
+            UserControl current = new ExplorationScreen(gameInfo_);
             ViewsBorder.Child = current;
         }
 

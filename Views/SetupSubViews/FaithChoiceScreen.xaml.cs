@@ -1,5 +1,4 @@
-﻿using BAT_WPF.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,23 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BAT_WPF.Views
+namespace BAT_WPF.Views.SetupSubViews
 {
-    /*
-     * TODO:
-     * List of gods / saints / other holy figures of the player faction's religion
-     * Building / dismantling of religious buildings
-     * Ritual magic, sacrifices etc.
-     */
-
     /// <summary>
-    /// Interaction logic for FaithScreen.xaml
+    /// Interaction logic for FaithChoiceScreen.xaml
     /// </summary>
-    public partial class FaithScreen : UserControl
+    public partial class FaithChoiceScreen : UserControl
     {
-        public FaithScreen( GameInfo gameinfo )
+        public FaithChoiceScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

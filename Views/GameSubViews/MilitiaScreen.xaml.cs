@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BAT_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BAT_WPF
+namespace BAT_WPF.Views
 {
     /*
      * TODO:
@@ -29,8 +30,9 @@ namespace BAT_WPF
     /// </summary>
     public partial class MilitiaScreen : UserControl
     {
-        public MilitiaScreen()
+        public MilitiaScreen( GameInfo gameinfo )
         {
+            DataContext = gameinfo;
             InitializeComponent();
         }
     }

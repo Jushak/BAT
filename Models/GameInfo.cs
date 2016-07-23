@@ -13,7 +13,7 @@ namespace BAT_WPF.Models
      * Model for game-specific info such as current year, season, player faction's name etc.
      * Includes both values shown in different sections of the UI as well as hidden info.
      */
-    public class GameInfo : GameInfoBase
+    public class GameInfo : InfoBase
     {
         ushort year_;
         public Seasons season_;

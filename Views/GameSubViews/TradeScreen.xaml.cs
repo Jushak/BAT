@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BAT_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,9 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class TradeScreen : UserControl
     {
-        public TradeScreen()
+        public TradeScreen( GameInfo gameinfo )
         {
+            DataContext = gameinfo;
             InitializeComponent();
         }
     }
