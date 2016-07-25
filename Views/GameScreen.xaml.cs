@@ -41,7 +41,7 @@ namespace BAT_WPF
         // Open Options-dialog
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptionsDialog popup = new OptionsDialog( parentBorder_ );
+            OptionsDialog popup = new OptionsDialog( parentBorder_, gameInfo_ );
             popup.ShowDialog();
         }
 

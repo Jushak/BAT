@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml.Serialization;
 
 public enum Seasons { Seeding, Growing, Harvesting, Decaying, Sleeping };
 
@@ -13,13 +13,14 @@ namespace BAT_WPF.Models
      * Model for game-specific info such as current year, season, player faction's name etc.
      * Includes both values shown in different sections of the UI as well as hidden info.
      */
+    [XmlRootAttribute("BATSaveFile", Namespace = "BAT_Data")]
+    [Serializable()]
     public class GameInfo : InfoBase
     {
         ushort year_;
         public Seasons season_;
         string factionName_;
         Boolean firstActionUsed;
-        Faith factionFaith_;
         List<Leader> leaders_;
         List<Leader> councilors_;
         UInt16 population_;
@@ -35,7 +36,6 @@ namespace BAT_WPF.Models
             year_ = 100;
             season_ = Seasons.Seeding;
             factionName_ = "TestFaction";
-            factionFaith_ = new Faith();
             firstActionUsed = false;
             leaders_ = new List<Leader>();
             councilors_ = new List<Leader>();
@@ -59,7 +59,6 @@ namespace BAT_WPF.Models
             year_ = year;
             season_ = Seasons.Seeding;
             factionName_ = name;
-            factionFaith_ = new Faith();
             leaders_ = new List<Leader>();
             councilors_ = new List<Leader>();
             population_ = 800;
@@ -98,7 +97,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal List<Leader> Leaders
+        public List<Leader> Leaders
         {
             get
             {
@@ -111,7 +110,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal List<Leader> Councilors
+        public List<Leader> Councilors
         {
             get
             {
@@ -227,6 +226,7 @@ namespace BAT_WPF.Models
                 firstActionUsed = value;
             }
         }
+
         #endregion
 
         #region Operations

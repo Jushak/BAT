@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BAT_WPF.Models
 {
     /*
      * Model for a religious system. Holds random information used for generating text in events.
      */
+    [XmlRootAttribute("BAT_Faith", Namespace = "BAT_Data")]
+    [Serializable()]
     public class Faith
     {
         string name_;
@@ -124,7 +127,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal List<God> Pantheon_
+        public List<God> Pantheon_
         {
             get
             {
@@ -137,7 +140,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal God MainGod_
+        public God MainGod_
         {
             get
             {

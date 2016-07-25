@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BAT_WPF.Models
 {
+    [XmlRootAttribute("BAT_God", Namespace = "BAT_Data")]
+    [Serializable()]
     public class God : Actor
     {
         List<String> portfolio_;
@@ -25,8 +28,8 @@ namespace BAT_WPF.Models
             combatFeats_ = new List<String>();
             favoredSkills_ = new List<String>();
             genderSplit_ = 50;
-            priests_ = true;
-            priestesses_ = true;
+            Priests_ = true;
+            Priestesses_ = true;
         }
 
         public God(string name) 
@@ -37,8 +40,8 @@ namespace BAT_WPF.Models
             combatFeats_ = new List<String>();
             favoredSkills_ = new List<String>();
             genderSplit_ = 50;
-            priests_ = true;
-            priestesses_ = true;
+            Priests_ = true;
+            Priestesses_ = true;
         }
 
         #endregion
@@ -106,6 +109,32 @@ namespace BAT_WPF.Models
             set
             {
                 genderSplit_ = value;
+            }
+        }
+
+        public bool Priests_
+        {
+            get
+            {
+                return priests_;
+            }
+
+            set
+            {
+                priests_ = value;
+            }
+        }
+
+        public bool Priestesses_
+        {
+            get
+            {
+                return priestesses_;
+            }
+
+            set
+            {
+                priestesses_ = value;
             }
         }
         #endregion

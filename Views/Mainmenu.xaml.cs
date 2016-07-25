@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BAT_WPF.Views;
 using BAT_WPF.Models;
 using BAT_WPF.Logic;
+using Microsoft.Win32;
 
 namespace BAT_WPF
 {
@@ -33,12 +34,6 @@ namespace BAT_WPF
         // Start a new game.
         private void Btn_StartNew_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 
-            // 1. New game "flowchart" for pre-game decisions for your faction.
-            // 2. Faction data generation based on decisions.
-            // 3. Generate faction noble/leader pool
-
-            // TEMP: Load up unfinished faction setup for now.
             FactionSetup setup = new FactionSetup( parentBorder_ );
             parentBorder_.Child = setup;
         }
@@ -46,17 +41,15 @@ namespace BAT_WPF
         // Load an existing game.
         private void Btn_LoadGame_Click(object sender, RoutedEventArgs e)
         {
-            // TODO:
-            // 1. Save file creation.
-            // 2. Load file dialogue.
-            // 3. Save file parsing.
-
-            // TEMP: Load up placeholder session for now.
-            GameInfo gameInfo = new GameInfo();
-            GameLogic gameLogic = new GameLogic(gameInfo);
-            DataContext = gameInfo;
-            GameScreen game = new GameScreen( gameInfo, gameLogic, parentBorder_ );
-            parentBorder_.Child = game;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML file (*.xml)|*.xml";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                GameSerializer loader = new GameSerializer();
+                GameInfo info = loader.deserializeFile(openFileDialog.FileName);
+                parentBorder_.Child = new GameScreen(info, new Logic.GameLogic(info), parentBorder_);
+            }
         }
 
         // Navigate to options page.

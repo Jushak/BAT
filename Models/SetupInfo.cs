@@ -83,5 +83,9 @@ namespace BAT_WPF.Models
 
         #endregion
 
+        #region Functions
+
+        #endregion
+
     }
 }

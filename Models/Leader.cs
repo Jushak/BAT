@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BAT_WPF.Models
 {
-    enum Skill { none, poor, mediocre, good, great, superior, heroic };
+    public enum Skill { none, poor, mediocre, good, great, superior, heroic };
 
     /* 
      * Model for leaders - a catch-all term for nobles and other upper-class personage that form
      * the leadership of the faction. Form the pool of characters eligible for faction's council.
      */
+    [XmlRootAttribute("BAT_Leader", Namespace = "BAT_Data")]
+    [Serializable()]
     public class Leader : Actor
     {
         // What faith the leader follows, if any.
-        Faith myFaith;
+        string myFaith;
         // The main god(s) the leader follows.
         List<God> myGods;
         // Skills possessed by the leader, with numerical value going from 0 (no skill) to 6 (heroic).
         Skill leadership;
-        Skill nargaining;
+        Skill bargaining;
         Skill combat;
         Skill custom;
         Skill magic;
@@ -31,11 +34,19 @@ namespace BAT_WPF.Models
         public Leader()
             : base("TestLeader")
         {
-
+            myFaith = "";
+            Skill leadership = Skill.mediocre;
+            Skill bargaining = Skill.mediocre;
+            Skill combat = Skill.mediocre;
+            Skill custom = Skill.mediocre;
+            Skill magic = Skill.mediocre;
+            Skill animals = Skill.mediocre;
+            Skill plants = Skill.mediocre;
+            Skill lore = Skill.mediocre;
         }
 
         #region Getters and setters
-        internal Faith MyFaith
+        public string MyFaith
         {
             get
             {
@@ -48,7 +59,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal List<God> MyGods
+        public List<God> MyGods
         {
             get
             {
@@ -61,7 +72,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Leadership
+        public Skill Leadership
         {
             get
             {
@@ -74,20 +85,20 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Nargaining
+        public Skill Bargaining
         {
             get
             {
-                return nargaining;
+                return bargaining;
             }
 
             set
             {
-                nargaining = value;
+                bargaining = value;
             }
         }
 
-        internal Skill Combat
+        public Skill Combat
         {
             get
             {
@@ -100,7 +111,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Custom
+        public Skill Custom
         {
             get
             {
@@ -113,7 +124,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Magic
+        public Skill Magic
         {
             get
             {
@@ -126,7 +137,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Animals
+        public Skill Animals
         {
             get
             {
@@ -139,7 +150,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Plants
+        public Skill Plants
         {
             get
             {
@@ -152,7 +163,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        internal Skill Lore
+        public Skill Lore
         {
             get
             {
