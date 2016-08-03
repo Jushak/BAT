@@ -9,8 +9,8 @@
              Background="Black">
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Foreground="Beige" FontFamily="Arial Bold" FontSize="24" HorizontalAlignment="Center">Beyond Apocalyptic Times</Label>
-            <Label Foreground="Wheat" HorizontalAlignment="Center">Loading</Label>
+            <Label Name="lblTitle" Foreground="Beige" FontFamily="Arial Bold" FontSize="24" HorizontalAlignment="Center">Beyond Apocalyptic Times</Label>
+            <Label Name="lblLoading" Foreground="Wheat" HorizontalAlignment="Center">Loading</Label>
         </StackPanel>
     </Grid>
 </UserControl>

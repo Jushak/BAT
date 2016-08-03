@@ -17,10 +17,10 @@ namespace BAT_WPF.Models
         string name_;
         string adjective_;
         string plural_;
-        List<String> derogatoryAdjective_;
-        List<String> derogatoryPlural_;
-        List<String> derogatorySingle_;
-        List<God> pantheon_;
+        List<string> derogatoryAdjective_;
+        List<string> derogatoryPlural_;
+        List<string> derogatorySingle_;
+        List<string> pantheon_;
         God mainGod_;
 
         #region Constructors
@@ -127,7 +127,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public List<God> Pantheon_
+        public List<String> Pantheon_
         {
             get
             {

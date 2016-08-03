@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BAT_WPF"
         mc:Ignorable="d"
-        Title="Beyond Apocalyptic Times" Height="671" Width="868" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BAT_WPF;component/BAT.ico">
+        Title="Beyond Apocalyptic Times" Height="671" Width="868" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BAT_WPF;component/BAT.ico" Loaded="Window_Loaded">
         
     <Grid>
         <Border x:Name="MainBorder" HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="860" Background="Black"/>

@@ -20,7 +20,7 @@ namespace BAT_WPF.Models
         // What faith the leader follows, if any.
         string myFaith;
         // The main god(s) the leader follows.
-        List<God> myGods;
+        List<String> myGods;
         // Skills possessed by the leader, with numerical value going from 0 (no skill) to 6 (heroic).
         Skill leadership;
         Skill bargaining;
@@ -35,6 +35,7 @@ namespace BAT_WPF.Models
             : base("TestLeader")
         {
             myFaith = "";
+            myGods = new List<string>();
             Skill leadership = Skill.mediocre;
             Skill bargaining = Skill.mediocre;
             Skill combat = Skill.mediocre;
@@ -59,7 +60,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public List<God> MyGods
+        public List<string> MyGods
         {
             get
             {

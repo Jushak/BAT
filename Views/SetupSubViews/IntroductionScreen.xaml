@@ -8,10 +8,6 @@
              d:DesignHeight="500" d:DesignWidth="300"
              Background="Beige">
     <StackPanel Height="500" Width="300" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Label>
-            <Label.Content>
-                <AccessText TextWrapping="Wrap" Text = "{DynamicResource ResourceKey=txtIntroduction}" />
-            </Label.Content>
-        </Label>
+        <TextBlock TextWrapping="Wrap" Text = "{DynamicResource ResourceKey=txtIntroduction}" TextAlignment="Center"/>
     </StackPanel>
 </UserControl>

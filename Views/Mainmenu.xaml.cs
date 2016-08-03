@@ -17,7 +17,7 @@ using BAT_WPF.Models;
 using BAT_WPF.Logic;
 using Microsoft.Win32;
 
-namespace BAT_WPF
+namespace BAT_WPF.Views
 {
     /// <summary>
     /// Interaction logic for Mainmenu.xaml

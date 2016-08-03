@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Globalization;
 using System.Windows.Markup;
 using System.Threading;
+using BAT_WPF.Views;
+using BAT_WPF.Models;
 
 namespace BAT_WPF
 {
@@ -22,9 +24,15 @@ namespace BAT_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private delegate void LoaderDelegate();
+        LoaderDelegate loaderDelegate;
+        Thread loadingThread;
+
         public MainWindow()
         {
+
             InitializeComponent();
+
             this.Language = XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag);
             var culture = CultureInfo.CurrentCulture.Name;
             ResourceDictionary dict = new ResourceDictionary();
@@ -36,8 +44,29 @@ namespace BAT_WPF
                     break;
             }
             this.Resources.MergedDictionaries.Add(dict);
-    
+            loaderDelegate = new LoaderDelegate(this.loadingDone);
+            MainBorder.Child = new LoadingScreen(MainBorder);
+        }
+
+
+        private void loadingDone()
+        {
             MainBorder.Child = new Mainmenu(MainBorder);
+        }
+
+        void dataLoader()
+        {
+            // Test: Simulate loading all the data by sleeping
+            Thread.Sleep(5000);
+            // TODO: Add all the items that need to load.
+            GameData data = GameData.Instance;
+            this.Dispatcher.Invoke(loadingDone);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadingThread = new Thread(dataLoader);
+            loadingThread.Start();
         }
     }
 }
