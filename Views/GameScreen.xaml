@@ -54,6 +54,7 @@
         <Grid DockPanel.Dock="Left" Width="60" Background="Khaki">
             <Button Name="BtnPass" VerticalAlignment="Top" HorizontalAlignment="Center" Click="BtnPass_Click">Pass</Button>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="BtnAgriculture" Click="BtnAgriculture_Click" Content="{DynamicResource ResourceKey=btnAgriculture}"/>
                 <Button x:Name="BtnDiplomacy" Click="BtnDiplomacy_Click" Content="{DynamicResource ResourceKey=btnDiplomacy}"/>
                 <Button x:Name="BtnTrade" Click="BtnTrade_Click" Content="{DynamicResource ResourceKey=btnTrade}"/>
                 <Button x:Name="BtnMilitia" Click="BtnMilitia_Click" Content="{DynamicResource ResourceKey=btnMilitia}"/>
@@ -64,7 +65,7 @@
         </Grid>
         <Grid DockPanel.Dock="Right" Width="60" Background="Khaki"/>
         <Grid>
-            <Border x:Name="ViewsBorder"/>
+            <Border x:Name="ViewsBorder" Width="740" Height="460"/>
         </Grid>
 
     </DockPanel>

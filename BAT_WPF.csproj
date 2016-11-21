@@ -111,6 +111,9 @@
     <Compile Include="Views\GameSubViews\TradeScreen.xaml.cs">
       <DependentUpon>TradeScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GameSubViews\AgricultureScreen.xaml.cs">
+      <DependentUpon>AgricultureScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SetupSubViews\FaithChoiceScreen.xaml.cs">
       <DependentUpon>FaithChoiceScreen.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GameSubViews\TradeScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\AgricultureScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

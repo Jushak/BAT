@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="BAT_WPF.Views.AgricultureScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Models="clr-namespace:BAT_WPF.Models"
+             xmlns:local="clr-namespace:BAT_WPF.Views.SetupSubViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="460" d:DesignWidth="740">
+    <UserControl.DataContext>
+        <Models:GameInfo/>
+    </UserControl.DataContext>
+    
+    <StackPanel Background="YellowGreen">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Agriculture</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="{DynamicResource ResourceKey=Herds}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Cows}"/>
+                    <TextBlock Text="{Binding Cows_}" Margin="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Sheep}"/>
+                    <TextBlock Text="{Binding Sheep_}" Margin="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Horses}"/>
+                    <TextBlock Text="{Binding Horses_}" Margin="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Pigs}"/>
+                    <TextBlock Text="{Binding Pigs_}" Margin="5" />
+                </StackPanel>
+                <Button Name="btnSlaughter" Content="{DynamicResource ResourceKey=btnSlaughter}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="{DynamicResource ResourceKey=Lands}" />
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Forests}"/>
+                    <TextBlock Text="{Binding ForestLand_}" Margin="5" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Pastures}"/>
+                    <TextBlock Text="{Binding Pastures_}" Margin="5" />
+                </StackPanel>
+                <!-- Temporary maximum values: needs to be currentFields + pastures -->
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Wheat}"/>
+                    <Slider Value="{Binding WheatFields_}" Minimum="0" Maximum="300" Width="100" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding WheatFields_}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Barley}"/>
+                    <Slider Value="{Binding BarleyFields_}" Minimum="0" Maximum="300" Width="100" />
+                    <TextBox Text="{Binding BarleyFields_}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=Rye}"/>
+                    <Slider Value="{Binding RyeFields_}" Minimum="0" Maximum="300" Width="100"/>
+                    <TextBox Text="{Binding RyeFields_}" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

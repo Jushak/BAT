@@ -45,6 +45,13 @@ namespace BAT_WPF
             popup.ShowDialog();
         }
 
+        // Change current frame page to Agriculture screen.
+        private void BtnAgriculture_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl current = new AgricultureScreen(gameInfo_);
+            ViewsBorder.Child = current;
+        }
+
         // Change current frame page to Diplomacy screen.
         private void BtnDiplomacy_Click(object sender, RoutedEventArgs e)
         {

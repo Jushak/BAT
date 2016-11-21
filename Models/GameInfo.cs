@@ -29,6 +29,16 @@ namespace BAT_WPF.Models
         UInt16 warriors_;
         UInt16 magic_;
         Int16 genderDominance_;
+        UInt16 farmLand_;
+        UInt16 wheatFields_;
+        UInt16 barleyFields_;
+        UInt16 ryeFields_;
+        UInt16 forestLand_;
+        UInt16 pastures_;
+        UInt16 sheep_;
+        UInt16 cows_;
+        UInt16 pigs_;
+        UInt16 horses_;
 
         #region Constructors
         public GameInfo()
@@ -45,6 +55,16 @@ namespace BAT_WPF.Models
             warriors_ = 10;
             magic_ = 3;
             genderDominance_ = 50;
+            farmLand_ = 250;
+            forestLand_ = 200;
+            wheatFields_ = 100;
+            barleyFields_ = 100;
+            ryeFields_ = 100;
+            pastures_ = 150;
+            sheep_ = 1000;
+            cows_ = 800;
+            pigs_ = 2000;
+            horses_ = 50;
         }
 
         // Constructor for use with 
@@ -224,6 +244,175 @@ namespace BAT_WPF.Models
             set
             {
                 firstActionUsed = value;
+            }
+        }
+
+        public ushort FarmLand_
+        {
+            get
+            {
+                return FarmLand_1;
+            }
+
+            set
+            {
+                FarmLand_1 = value;
+            }
+        }
+
+        public ushort ForestLand_
+        {
+            get
+            {
+                return ForestLand_1;
+            }
+
+            set
+            {
+                ForestLand_1 = value;
+            }
+        }
+
+        public ushort Pastures_
+        {
+            get
+            {
+                return Pastures_1;
+            }
+
+            set
+            {
+                Pastures_1 = value;
+            }
+        }
+
+        public ushort FarmLand_1
+        {
+            get
+            {
+                return farmLand_;
+            }
+
+            set
+            {
+                farmLand_ = value;
+            }
+        }
+
+        public ushort WheatFields_
+        {
+            get
+            {
+                return wheatFields_;
+            }
+
+            set
+            {
+                wheatFields_ = value;
+            }
+        }
+
+        public ushort BarleyFields_
+        {
+            get
+            {
+                return barleyFields_;
+            }
+
+            set
+            {
+                barleyFields_ = value;
+            }
+        }
+
+        public ushort RyeFields_
+        {
+            get
+            {
+                return ryeFields_;
+            }
+
+            set
+            {
+                ryeFields_ = value;
+            }
+        }
+
+        public ushort ForestLand_1
+        {
+            get
+            {
+                return forestLand_;
+            }
+
+            set
+            {
+                forestLand_ = value;
+            }
+        }
+
+        public ushort Pastures_1
+        {
+            get
+            {
+                return pastures_;
+            }
+
+            set
+            {
+                pastures_ = value;
+            }
+        }
+
+        public ushort Sheep_
+        {
+            get
+            {
+                return sheep_;
+            }
+
+            set
+            {
+                sheep_ = value;
+            }
+        }
+
+        public ushort Cows_
+        {
+            get
+            {
+                return cows_;
+            }
+
+            set
+            {
+                cows_ = value;
+            }
+        }
+
+        public ushort Pigs_
+        {
+            get
+            {
+                return pigs_;
+            }
+
+            set
+            {
+                pigs_ = value;
+            }
+        }
+
+        public ushort Horses_
+        {
+            get
+            {
+                return horses_;
+            }
+
+            set
+            {
+                horses_ = value;
             }
         }
 
