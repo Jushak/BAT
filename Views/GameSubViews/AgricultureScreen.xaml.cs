@@ -51,10 +51,14 @@ namespace BAT_WPF.Views
 
     public partial class AgricultureScreen : UserControl
     { 
-        public AgricultureScreen( GameInfo gameinfo)
+        public AgricultureScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
+        }
+
+        private void RyeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

@@ -28,9 +28,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class TradeScreen : UserControl
     {
-        public TradeScreen( GameInfo gameinfo )
+        public TradeScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

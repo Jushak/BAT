@@ -29,7 +29,7 @@ namespace BAT_WPF.Models
         UInt16 warriors_;
         UInt16 magic_;
         Int16 genderDominance_;
-        UInt16 farmLand_;
+        UInt16 totalLand_;
         UInt16 wheatFields_;
         UInt16 barleyFields_;
         UInt16 ryeFields_;
@@ -55,7 +55,7 @@ namespace BAT_WPF.Models
             warriors_ = 10;
             magic_ = 3;
             genderDominance_ = 50;
-            farmLand_ = 250;
+            totalLand_ = 650;
             forestLand_ = 200;
             wheatFields_ = 100;
             barleyFields_ = 100;
@@ -87,6 +87,16 @@ namespace BAT_WPF.Models
             warriors_ = 10;
             magic_ = 3;
             genderDominance_ = 50;
+            totalLand_ = 650;
+            forestLand_ = 200;
+            wheatFields_ = 100;
+            barleyFields_ = 100;
+            ryeFields_ = 100;
+            pastures_ = 150;
+            sheep_ = 1000;
+            cows_ = 800;
+            pigs_ = 2000;
+            horses_ = 50;
         }
         #endregion
 
@@ -290,12 +300,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return farmLand_;
+                return totalLand_;
             }
 
             set
             {
-                farmLand_ = value;
+                totalLand_ = value;
             }
         }
 
@@ -448,6 +458,16 @@ namespace BAT_WPF.Models
             // Notify UI of season change and reset action-tracking Boolean to false.
             this.NotifyPropertyChanged("season");
             firstActionUsed = false;
+        }
+
+        public void calculateForests()
+        {
+            forestLand_ = (ushort)(totalLand_ - pastures_ - wheatFields_ - barleyFields_ - ryeFields_);
+        }
+
+        public void calculatePastures()
+        {
+            pastures_ = (ushort)(totalLand_-forestLand_-wheatFields_-barleyFields_-ryeFields_);
         }
 
         #endregion

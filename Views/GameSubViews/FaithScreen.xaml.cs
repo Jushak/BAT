@@ -28,9 +28,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class FaithScreen : UserControl
     {
-        public FaithScreen( GameInfo gameinfo )
+        public FaithScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

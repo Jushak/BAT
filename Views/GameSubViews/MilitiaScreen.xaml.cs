@@ -30,9 +30,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class MilitiaScreen : UserControl
     {
-        public MilitiaScreen( GameInfo gameinfo )
+        public MilitiaScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

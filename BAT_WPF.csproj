@@ -86,6 +86,7 @@
     <Compile Include="Models\InfoBase.cs" />
     <Compile Include="Models\God.cs" />
     <Compile Include="Models\Leader.cs" />
+    <Compile Include="Views\SumConverter.cs" />
     <Compile Include="Models\SetupInfo.cs" />
     <Compile Include="Views\FactionSetup.xaml.cs">
       <DependentUpon>FactionSetup.xaml</DependentUpon>

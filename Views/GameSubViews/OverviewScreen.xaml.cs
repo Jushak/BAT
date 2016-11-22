@@ -28,9 +28,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class OverviewScreen : UserControl
     {
-        public OverviewScreen( GameInfo gameinfo )
+        public OverviewScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

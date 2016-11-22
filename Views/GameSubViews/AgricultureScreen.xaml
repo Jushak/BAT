@@ -4,12 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:Models="clr-namespace:BAT_WPF.Models"
-             xmlns:local="clr-namespace:BAT_WPF.Views.SetupSubViews"
+             xmlns:local="clr-namespace:BAT_WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="740">
-    <UserControl.DataContext>
-        <Models:GameInfo/>
-    </UserControl.DataContext>
     
     <StackPanel Background="YellowGreen">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Agriculture</TextBlock>
@@ -40,27 +37,28 @@
                 <Label Content="{DynamicResource ResourceKey=Lands}" />
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Forests}"/>
-                    <TextBlock Text="{Binding ForestLand_}" Margin="5" />
+                    <TextBlock Name="Forests" Text="{Binding ForestLand_, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Pastures}"/>
-                    <TextBlock Text="{Binding Pastures_}" Margin="5" />
+                    <Slider Name="PastureSlider" Value="{Binding Pastures_, Mode=TwoWay}" Minimum="0" Maximum="300" Width="100" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding ElementName=PastureSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <!-- Temporary maximum values: needs to be currentFields + pastures -->
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Wheat}"/>
-                    <Slider Value="{Binding WheatFields_}" Minimum="0" Maximum="300" Width="100" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding WheatFields_}" />
+                    <Slider Name="WheatSlider"  Value="{Binding WheatFields_, Mode=TwoWay}" Minimum="0" Maximum="300" Width="100" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding ElementName=WheatSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Barley}"/>
-                    <Slider Value="{Binding BarleyFields_}" Minimum="0" Maximum="300" Width="100" />
-                    <TextBox Text="{Binding BarleyFields_}" />
+                    <Slider Name="BarleySlider" Value="{Binding BarleyFields_, Mode=TwoWay}" Minimum="0" Maximum="300" Width="100" />
+                    <TextBox Text="{Binding ElementName=BarleySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Rye}"/>
-                    <Slider Value="{Binding RyeFields_}" Minimum="0" Maximum="300" Width="100"/>
-                    <TextBox Text="{Binding RyeFields_}" />
+                    <Slider Name="RyeSlider" Value="{Binding RyeFields_, Mode=TwoWay}" Minimum="0" Maximum="{Binding TotalLand_}"  Width="100" ValueChanged="RyeSlider_ValueChanged"/>
+                    <TextBox Text="{Binding ElementName=RyeSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

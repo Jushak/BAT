@@ -28,9 +28,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class ExplorationScreen : UserControl
     {
-        public ExplorationScreen( GameInfo gameinfo)
+        public ExplorationScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }

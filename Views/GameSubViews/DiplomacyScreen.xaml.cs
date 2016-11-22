@@ -30,9 +30,8 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class DiplomacyScreen : UserControl
     {
-        public DiplomacyScreen( GameInfo gameinfo )
+        public DiplomacyScreen()
         {
-            DataContext = gameinfo;
             InitializeComponent();
         }
     }
