@@ -55,10 +55,5 @@ namespace BAT_WPF.Views
         {
             InitializeComponent();
         }
-
-        private void RyeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
     }
 }

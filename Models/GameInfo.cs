@@ -17,28 +17,34 @@ namespace BAT_WPF.Models
     [Serializable()]
     public class GameInfo : InfoBase
     {
-        ushort year_;
+        int year_;
         public Seasons season_;
         string factionName_;
         Boolean firstActionUsed;
         List<Leader> leaders_;
         List<Leader> councilors_;
-        UInt16 population_;
-        UInt16 goods_;
-        UInt16 food_;
-        UInt16 warriors_;
-        UInt16 magic_;
-        Int16 genderDominance_;
-        UInt16 totalLand_;
-        UInt16 wheatFields_;
-        UInt16 barleyFields_;
-        UInt16 ryeFields_;
-        UInt16 forestLand_;
-        UInt16 pastures_;
-        UInt16 sheep_;
-        UInt16 cows_;
-        UInt16 pigs_;
-        UInt16 horses_;
+        int population_;
+        int goods_;
+        int food_;
+        int warriors_;
+        int magic_;
+        int genderDominance_;
+        int totalLand_;
+        int wheatFields_;
+        int barleyFields_;
+        int ryeFields_;
+        int forestLand_;
+        int pastures_;
+        int sheep_;
+        int cows_;
+        int pigs_;
+        int horses_;
+
+        // Temporary values for sliders until I get multi-value converters to work.
+        int pastureMax_;
+        int wheatMax_;
+        int barleyMax_;
+        int ryeMax_;
 
         #region Constructors
         public GameInfo()
@@ -65,6 +71,11 @@ namespace BAT_WPF.Models
             cows_ = 800;
             pigs_ = 2000;
             horses_ = 50;
+
+            pastureMax_ = 0;
+            wheatMax_ = 0;
+            barleyMax_ = 0;
+            ryeMax_ = 0;
         }
 
         // Constructor for use with 
@@ -74,7 +85,7 @@ namespace BAT_WPF.Models
         }
 
         // Debug constructor.
-        public GameInfo(string name, ushort year)
+        public GameInfo(string name, int year)
         {
             year_ = year;
             season_ = Seasons.Seeding;
@@ -97,11 +108,16 @@ namespace BAT_WPF.Models
             cows_ = 800;
             pigs_ = 2000;
             horses_ = 50;
+
+            pastureMax_ = 0;
+            wheatMax_ = 0;
+            barleyMax_ = 0;
+            ryeMax_ = 0;
         }
         #endregion
 
         #region Getters and setters
-        public ushort Year
+        public int Year
         {
             get
             {
@@ -153,7 +169,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Population
+        public int Population
         {
             get
             {
@@ -166,7 +182,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Goods
+        public int Goods
         {
             get
             {
@@ -179,7 +195,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Food
+        public int Food
         {
             get
             {
@@ -192,7 +208,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Warriors
+        public int Warriors
         {
             get
             {
@@ -205,7 +221,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Magic
+        public int Magic
         {
             get
             {
@@ -218,7 +234,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public short GenderDominance
+        public int GenderDominance
         {
             get
             {
@@ -257,46 +273,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort FarmLand_
-        {
-            get
-            {
-                return FarmLand_1;
-            }
-
-            set
-            {
-                FarmLand_1 = value;
-            }
-        }
-
-        public ushort ForestLand_
-        {
-            get
-            {
-                return ForestLand_1;
-            }
-
-            set
-            {
-                ForestLand_1 = value;
-            }
-        }
-
-        public ushort Pastures_
-        {
-            get
-            {
-                return Pastures_1;
-            }
-
-            set
-            {
-                Pastures_1 = value;
-            }
-        }
-
-        public ushort FarmLand_1
+        public int TotalLand
         {
             get
             {
@@ -309,7 +286,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort WheatFields_
+        public int WheatFields
         {
             get
             {
@@ -319,10 +296,15 @@ namespace BAT_WPF.Models
             set
             {
                 wheatFields_ = value;
+                NotifyPropertyChanged("WheatFields");
+                NotifyPropertyChanged("Pastures");
+                NotifyPropertyChanged("PastureMax");
+                NotifyPropertyChanged("BarleyMax");
+                NotifyPropertyChanged("RyeMax");
             }
         }
 
-        public ushort BarleyFields_
+        public int BarleyFields
         {
             get
             {
@@ -332,10 +314,15 @@ namespace BAT_WPF.Models
             set
             {
                 barleyFields_ = value;
+                NotifyPropertyChanged("BarleyFields");
+                NotifyPropertyChanged("Pastures");
+                NotifyPropertyChanged("PastureMax");
+                NotifyPropertyChanged("WheatMax");
+                NotifyPropertyChanged("RyeMax");
             }
         }
 
-        public ushort RyeFields_
+        public int RyeFields
         {
             get
             {
@@ -345,13 +332,19 @@ namespace BAT_WPF.Models
             set
             {
                 ryeFields_ = value;
+                NotifyPropertyChanged("RyeFields");
+                NotifyPropertyChanged("Pastures");
+                NotifyPropertyChanged("PastureMax");
+                NotifyPropertyChanged("WheatMax");
+                NotifyPropertyChanged("BarleyMax");
             }
         }
 
-        public ushort ForestLand_1
+        public int ForestLand
         {
             get
             {
+                calculateForests();
                 return forestLand_;
             }
 
@@ -361,20 +354,26 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Pastures_1
+        public int Pastures
         {
             get
             {
+                calculatePastures();
                 return pastures_;
             }
 
             set
             {
                 pastures_ = value;
+                NotifyPropertyChanged("ForestLand");
+                NotifyPropertyChanged("Pastures");
+                NotifyPropertyChanged("WheatMax");
+                NotifyPropertyChanged("BarleyMax");
+                NotifyPropertyChanged("RyeMax");
             }
         }
 
-        public ushort Sheep_
+        public int Sheep
         {
             get
             {
@@ -387,7 +386,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Cows_
+        public int Cows
         {
             get
             {
@@ -400,7 +399,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Pigs_
+        public int Pigs
         {
             get
             {
@@ -413,7 +412,7 @@ namespace BAT_WPF.Models
             }
         }
 
-        public ushort Horses_
+        public int Horses
         {
             get
             {
@@ -423,6 +422,62 @@ namespace BAT_WPF.Models
             set
             {
                 horses_ = value;
+            }
+        }
+
+        public int PastureMax
+        {
+            get
+            {
+                calculatePastureMax();
+                return pastureMax_;
+            }
+
+            set
+            {
+                pastureMax_ = value;
+            }
+        }
+
+        public int WheatMax
+        {
+            get
+            {
+                calculateWheatMax();
+                return wheatMax_;
+            }
+
+            set
+            {
+                wheatMax_ = value;
+            }
+        }
+
+        public int BarleyMax
+        {
+            get
+            {
+                calculateBarleyMax();
+                return barleyMax_;
+            }
+
+            set
+            {
+                barleyMax_ = value;
+            }
+        }
+
+        public int RyeMax
+        {
+            get
+            {
+                calculateRyeMax();
+                return ryeMax_;
+            }
+
+            set
+            {
+                ryeMax_ = value;
             }
         }
 
@@ -462,14 +517,34 @@ namespace BAT_WPF.Models
 
         public void calculateForests()
         {
-            forestLand_ = (ushort)(totalLand_ - pastures_ - wheatFields_ - barleyFields_ - ryeFields_);
+            forestLand_ = totalLand_ - pastures_ - wheatFields_ - barleyFields_ - ryeFields_;
         }
 
         public void calculatePastures()
         {
-            pastures_ = (ushort)(totalLand_-forestLand_-wheatFields_-barleyFields_-ryeFields_);
+            pastures_ = totalLand_ - forestLand_ - wheatFields_ - barleyFields_ - ryeFields_;
         }
 
+
+        public void calculatePastureMax()
+        {
+            pastureMax_ = pastures_+forestLand_;
+        }
+
+        public void calculateWheatMax()
+        {
+            wheatMax_ = pastures_ + wheatFields_;
+        }
+
+        public void calculateBarleyMax()
+        {
+            barleyMax_ = pastures_ + barleyFields_;
+        }
+
+        public void calculateRyeMax()
+        {
+            ryeMax_ = pastures_ + ryeFields_;
+        }
         #endregion
     }
 }
