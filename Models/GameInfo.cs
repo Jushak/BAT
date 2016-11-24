@@ -26,9 +26,11 @@ namespace BAT_WPF.Models
         int population_;
         int goods_;
         int food_;
-        int warriors_;
         int magic_;
         int genderDominance_;
+        
+
+        // Agriculture: All the variables that have to do with Agriculture screen 
         int totalLand_;
         int wheatFields_;
         int barleyFields_;
@@ -40,11 +42,41 @@ namespace BAT_WPF.Models
         int pigs_;
         int horses_;
 
-        // Temporary values for sliders until I get multi-value converters to work.
+        // Maximum values for sliders in Agriculture-screen.
         int pastureMax_;
         int wheatMax_;
         int barleyMax_;
         int ryeMax_;
+        
+        // Diplomacy:
+
+        // Trade:
+
+        // Militia:
+        int warriors_;
+
+        // Maximum values for sliders in agriculture-screen.
+        int warriorsMax_;
+        int innerPatrol_;
+        int innerPatrolMax_;
+        int outerPatrol_;
+        int outerPatrolMax_;
+        bool ramparts_;
+        bool watchTower_;
+        bool wall_;
+        bool moat_;
+
+        // Overview:
+        int children_;
+        int crafters_;
+        int hunters_;
+        int traders_;
+        int nobles_;
+        int farmers_;
+
+        // Faith:
+        
+        // Exploration:      
 
         #region Constructors
         public GameInfo()
@@ -61,6 +93,7 @@ namespace BAT_WPF.Models
             warriors_ = 10;
             magic_ = 3;
             genderDominance_ = 50;
+
             totalLand_ = 650;
             forestLand_ = 200;
             wheatFields_ = 100;
@@ -71,11 +104,27 @@ namespace BAT_WPF.Models
             cows_ = 800;
             pigs_ = 2000;
             horses_ = 50;
-
             pastureMax_ = 0;
             wheatMax_ = 0;
             barleyMax_ = 0;
             ryeMax_ = 0;
+
+            warriorsMax_ = 15;
+            innerPatrol_ = 3;
+            innerPatrolMax_ = 4;
+            outerPatrol_ = 2;
+            outerPatrolMax_ = 3;
+            ramparts_ = false;
+            watchTower_ = false;
+            wall_ = false;
+            moat_ = false;
+
+            children_ = 300;
+            crafters_ = 10;
+            hunters_ = 20;
+            traders_ = 10;
+            nobles_ = 30;
+            farmers_ = 400;
         }
 
         // Constructor for use with 
@@ -98,6 +147,7 @@ namespace BAT_WPF.Models
             warriors_ = 10;
             magic_ = 3;
             genderDominance_ = 50;
+
             totalLand_ = 650;
             forestLand_ = 200;
             wheatFields_ = 100;
@@ -108,11 +158,27 @@ namespace BAT_WPF.Models
             cows_ = 800;
             pigs_ = 2000;
             horses_ = 50;
-
             pastureMax_ = 0;
             wheatMax_ = 0;
             barleyMax_ = 0;
             ryeMax_ = 0;
+
+            warriorsMax_ = 15;
+            innerPatrol_ = 3;
+            innerPatrolMax_ = 4;
+            outerPatrol_ = 2;
+            outerPatrolMax_ = 3;
+            ramparts_ = false;
+            watchTower_ = false;
+            wall_ = false;
+            moat_ = false;
+
+            children_ = 300;
+            crafters_ = 10;
+            hunters_ = 20;
+            traders_ = 10;
+            nobles_ = 30;
+            farmers_ = 400;
         }
         #endregion
 
@@ -481,6 +547,207 @@ namespace BAT_WPF.Models
             }
         }
 
+        public int WarriorsMax
+        {
+            get
+            {
+                calculateWarriorMax();
+                return warriorsMax_;
+            }
+
+            set
+            {
+                warriorsMax_ = value;
+            }
+        }
+
+        public int InnerPatrol
+        {
+            get
+            {
+                return innerPatrol_;
+            }
+
+            set
+            {
+                innerPatrol_ = value;
+                NotifyPropertyChanged("OuterPatrolMax");
+            }
+        }
+
+        public int OuterPatrol
+        {
+            get
+            {
+                return outerPatrol_;
+            }
+
+            set
+            {
+                outerPatrol_ = value;
+                NotifyPropertyChanged("InnerPatrolMax");
+            }
+        }
+
+        public bool Ramparts
+        {
+            get
+            {
+                return ramparts_;
+            }
+
+            set
+            {
+                ramparts_ = value;
+            }
+        }
+
+        public bool WatchTower
+        {
+            get
+            {
+                return watchTower_;
+            }
+
+            set
+            {
+                watchTower_ = value;
+            }
+        }
+
+        public bool Wall
+        {
+            get
+            {
+                return wall_;
+            }
+
+            set
+            {
+                wall_ = value;
+            }
+        }
+
+        public bool Moat
+        {
+            get
+            {
+                return moat_;
+            }
+
+            set
+            {
+                moat_ = value;
+            }
+        }
+
+        public int InnerPatrolMax
+        {
+            get
+            {
+                calculateInnerPatrolMax();
+                return innerPatrolMax_;
+            }
+
+            set
+            {
+                innerPatrolMax_ = value;
+            }
+        }
+
+        public int OuterPatrolMax
+        {
+            get
+            {
+                calculateOuterPatrolMax();
+                return outerPatrolMax_;
+            }
+
+            set
+            {
+                outerPatrolMax_ = value;
+            }
+        }
+
+        public int Children
+        {
+            get
+            {
+                return children_;
+            }
+
+            set
+            {
+                children_ = value;
+            }
+        }
+
+        public int Crafters
+        {
+            get
+            {
+                return crafters_;
+            }
+
+            set
+            {
+                crafters_ = value;
+            }
+        }
+
+        public int Hunters
+        {
+            get
+            {
+                return hunters_;
+            }
+
+            set
+            {
+                hunters_ = value;
+            }
+        }
+
+        public int Traders
+        {
+            get
+            {
+                return traders_;
+            }
+
+            set
+            {
+                traders_ = value;
+            }
+        }
+
+        public int Nobles
+        {
+            get
+            {
+                return nobles_;
+            }
+
+            set
+            {
+                nobles_ = value;
+            }
+        }
+
+        public int Farmers
+        {
+            get
+            {
+                calculateFarmers();
+                return farmers_;
+            }
+
+            set
+            {
+                farmers_ = value;
+            }
+        }
+
         #endregion
 
         #region Operations
@@ -515,36 +782,57 @@ namespace BAT_WPF.Models
             firstActionUsed = false;
         }
 
-        public void calculateForests()
+        private void calculateForests()
         {
             forestLand_ = totalLand_ - pastures_ - wheatFields_ - barleyFields_ - ryeFields_;
         }
 
-        public void calculatePastures()
+        private void calculatePastures()
         {
             pastures_ = totalLand_ - forestLand_ - wheatFields_ - barleyFields_ - ryeFields_;
         }
-
-
-        public void calculatePastureMax()
+        
+        private void calculatePastureMax()
         {
             pastureMax_ = pastures_+forestLand_;
         }
 
-        public void calculateWheatMax()
+        private void calculateWheatMax()
         {
             wheatMax_ = pastures_ + wheatFields_;
         }
 
-        public void calculateBarleyMax()
+        private void calculateBarleyMax()
         {
             barleyMax_ = pastures_ + barleyFields_;
         }
 
-        public void calculateRyeMax()
+        private void calculateRyeMax()
         {
             ryeMax_ = pastures_ + ryeFields_;
         }
+
+        private void calculateInnerPatrolMax()
+        {
+            innerPatrolMax_ = warriors_ - outerPatrol_;
+        }
+
+        private void calculateOuterPatrolMax()
+        {
+            outerPatrolMax_ = warriors_ - innerPatrol_;
+        }
+
+        private void calculateWarriorMax()
+        {
+            // Placeholder formula. Maximum number of elite warriors is either current number or 1.25% of population, whichever is higher.
+            warriorsMax_ = Math.Max(warriors_,(int)(Math.Floor(population_ * 0.0125)));
+        }
+
+        private void calculateFarmers()
+        {
+            farmers_ = population_ - children_ - warriors_ - crafters_ - traders_ - hunters_ - nobles_;
+        }
+
         #endregion
     }
 }

@@ -34,5 +34,29 @@ namespace BAT_WPF.Views
         {
             InitializeComponent();
         }
+
+        private void btnHire_Click(object sender, RoutedEventArgs e)
+        {
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
+        }
+
+        private void btnDismiss_Click(object sender, RoutedEventArgs e)
+        {
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
+        }
+
+        private void btnRaid_Click(object sender, RoutedEventArgs e)
+        {
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
+        }
+
+        private void btnBattle_Click(object sender, RoutedEventArgs e)
+        {
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
+        }
     }
 }

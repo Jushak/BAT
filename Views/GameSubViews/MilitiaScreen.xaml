@@ -7,8 +7,36 @@
       mc:Ignorable="d" 
       d:DesignHeight="460" d:DesignWidth="740">
 
-    <Grid Background="DarkRed">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Militia screen!</TextBlock>
-        <Button Name="BtnTest" Width="80" Height="30">Press me!</Button>
-    </Grid>
+    <StackPanel Background="DarkRed">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Militia</TextBlock>
+        <Grid Width="700" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content ="{DynamicResource ResourceKey=Warriors}" />
+                    <TextBlock Text="{Binding Warriors}" Margin="5" />
+                    <StackPanel/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="btnHire" Content="{DynamicResource ResourceKey=HireWarriors }" Click="btnHire_Click"/>
+                    <Button Name="btnDismiss" Content="{DynamicResource ResourceKey=DismissWarriors }" Click="btnDismiss_Click" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=InnerPatrol}" />
+                    <Slider Name="InnerPatrolSlider" Value="{Binding InnerPatrol, Mode=TwoWay}" Minimum="0" Maximum="{Binding InnerPatrolMax, Mode=TwoWay}" Width="100" VerticalAlignment="Center" />
+                    <TextBox Name="InnerPatrolMax" Text="{Binding ElementName=InnerPatrolSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{DynamicResource ResourceKey=OuterPatrol}" />
+                    <Slider Name="OuterPatrolSlider" Value="{Binding OuterPatrol, Mode=TwoWay}" Minimum="0" Maximum="{Binding OuterPatrolMax, Mode=TwoWay}" Width="100" VerticalAlignment="Center" />
+                    <TextBox Name="OuterPatrolMax" Text="{Binding ElementName=OuterPatrolSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="btnRaid" Content="{DynamicResource ResourceKey=Raid }" Click="btnRaid_Click" />
+                    <Button Name="btnBattle" Content="{DynamicResource ResourceKey=Battle }" Click="btnBattle_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 </UserControl>

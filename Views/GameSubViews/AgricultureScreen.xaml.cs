@@ -55,5 +55,11 @@ namespace BAT_WPF.Views
         {
             InitializeComponent();
         }
+
+        private void btnSlaughter_Click(object sender, RoutedEventArgs e)
+        {
+            Window notImplemented = new NotImplementedDialog();
+            notImplemented.ShowDialog();
+        }
     }
 }

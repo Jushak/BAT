@@ -7,10 +7,44 @@
       mc:Ignorable="d" 
       d:DesignHeight="460" d:DesignWidth="740">
 
-    <Grid Background="Yellow" >
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Overview screen!</TextBlock>
-        <Button Name="BtnTest" Width="80" Height="30">Press me!</Button>
-    </Grid>
+    <StackPanel Background="Yellow">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top">Overview</TextBlock>
+        <Grid Width="700" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Left">
+                    <Label Content="{DynamicResource ResourceKey=Population}" HorizontalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Farmers}" />
+                        <TextBlock Text="{Binding Farmers}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Children}" />
+                        <TextBlock Text="{Binding Children}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Hunters}" />
+                        <TextBlock Text="{Binding Hunters}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Traders}" />
+                        <TextBlock Text="{Binding Traders}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Crafters}" />
+                        <TextBlock Text="{Binding Crafters}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Warriors}" />
+                        <TextBlock Text="{Binding Warriors}" Margin="5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{DynamicResource ResourceKey=Nobles}" />
+                        <TextBlock Text="{Binding Nobles}" Margin="5" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 
 
 </UserControl>
