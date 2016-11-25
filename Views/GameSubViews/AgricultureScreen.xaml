@@ -39,22 +39,22 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Pastures}"/>
-                    <Slider Name="PastureSlider" Value="{Binding Pastures, Mode=TwoWay}" Minimum="0" Maximum="{Binding PastureMax, Mode=TwoWay}" Width="100" VerticalAlignment="Center" />
+                    <Slider Name="PastureSlider" Value="{Binding Pastures, Mode=TwoWay}" Minimum="0" Maximum="{Binding PastureMax, Mode=TwoWay}" Width="100" TickFrequency="1" IsSnapToTickEnabled="true" />
                     <TextBox Text="{Binding ElementName=PastureSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Wheat}"/>
-                    <Slider Name="WheatSlider"  Value="{Binding WheatFields, Mode=TwoWay}" Minimum="0" Maximum="{Binding WheatMax, Mode=TwoWay}" Width="100" VerticalAlignment="Center" />
+                    <Slider Name="WheatSlider"  Value="{Binding WheatFields, Mode=TwoWay}" Minimum="0" Maximum="{Binding WheatMax, Mode=TwoWay}" Width="100" TickFrequency="1" IsSnapToTickEnabled="true" />
                     <TextBox Text="{Binding ElementName=WheatSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Barley}"/>
-                    <Slider Name="BarleySlider" Value="{Binding BarleyFields, Mode=TwoWay}" Minimum="0" Maximum="{Binding BarleyMax, Mode=TwoWay}" Width="100" />
+                    <Slider Name="BarleySlider" Value="{Binding BarleyFields, Mode=TwoWay}" Minimum="0" Maximum="{Binding BarleyMax, Mode=TwoWay}" Width="100" TickFrequency="1" IsSnapToTickEnabled="true"/>
                     <TextBox Text="{Binding ElementName=BarleySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=Rye}"/>
-                    <Slider Name="RyeSlider" Maximum="{Binding RyeMax, Mode=TwoWay}" Minimum="0" Value="{Binding RyeFields, Mode=TwoWay}" Width="100"/>
+                    <Slider Name="RyeSlider" Maximum="{Binding RyeMax, Mode=TwoWay}" Minimum="0" Value="{Binding RyeFields, Mode=TwoWay}" Width="100" TickFrequency="1" IsSnapToTickEnabled="true"/>
                     <TextBox Text="{Binding ElementName=RyeSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </StackPanel>

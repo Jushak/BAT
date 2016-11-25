@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BAT_WPF.Views"
         mc:Ignorable="d"
-        Title="GameOptions" Height="200" Width="300" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True">
-    <Grid Background="Khaki">
+        Title="GameOptions" Height="200" Width="300" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True" WindowStyle="None"
+        Background="Khaki">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="200" Width="300">
         <Button Name="BtnClose" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Click="BtnClose_Click">X</Button>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Name="BtnMenu" Margin="20" Click="BtnMenu_Click" >Main menu</Button>
-            <Button Name="BtnSave" Margin="20" Click="BtnSave_Click">Save</Button>
-            <Button Name="BtnLoad" Margin="20" Click="BtnLoad_Click">Load</Button>
-            <Button Name="BtnExit" Margin="20" Click="BtnExit_Click">Exit</Button>
+        <Label Content="{DynamicResource ResourceKey=lblOptions}" FontSize="20" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Name="BtnMenu" Margin="20" Click="BtnMenu_Click" >Main menu</Button>
+                <Button Name="BtnSave" Margin="20" Click="BtnSave_Click">Save</Button>
+                <Button Name="BtnLoad" Margin="20" Click="BtnLoad_Click">Load</Button>
+                <Button Name="BtnExit" Margin="20" Click="BtnExit_Click">Exit</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

@@ -13,12 +13,12 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
                     <Label Content ="{DynamicResource ResourceKey=Warriors}" />
-                    <TextBlock Text="{Binding Warriors}" Margin="5" />
+                    <TextBlock Text="{Binding Warriors, UpdateSourceTrigger=PropertyChanged}" Margin="5" />
                     <StackPanel/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Name="btnHire" Content="{DynamicResource ResourceKey=HireWarriors }" Click="btnHire_Click"/>
-                    <Button Name="btnDismiss" Content="{DynamicResource ResourceKey=DismissWarriors }" Click="btnDismiss_Click" />
+                    <Button Name="btnHire" Content="{DynamicResource ResourceKey=HireWarriors }" Width="90" Click="btnHire_Click"/>
+                    <Button Name="btnDismiss" Content="{DynamicResource ResourceKey=DismissWarriors }" Width="90" Click="btnDismiss_Click" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{DynamicResource ResourceKey=InnerPatrol}" />

@@ -37,14 +37,16 @@ namespace BAT_WPF.Views
 
         private void btnHire_Click(object sender, RoutedEventArgs e)
         {
-            Window notImplemented = new NotImplementedDialog();
-            notImplemented.ShowDialog();
+            Window hireScreen = new HireScreen();
+            hireScreen.DataContext = this.DataContext;
+            hireScreen.ShowDialog();
         }
 
         private void btnDismiss_Click(object sender, RoutedEventArgs e)
         {
-            Window notImplemented = new NotImplementedDialog();
-            notImplemented.ShowDialog();
+            Window dismissScreen = new DismissScreen();
+            dismissScreen.DataContext = this.DataContext;
+            dismissScreen.ShowDialog();
         }
 
         private void btnRaid_Click(object sender, RoutedEventArgs e)

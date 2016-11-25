@@ -86,6 +86,12 @@
     <Compile Include="Models\InfoBase.cs" />
     <Compile Include="Models\God.cs" />
     <Compile Include="Models\Leader.cs" />
+    <Compile Include="Views\GameSubViews\DismissScreen.xaml.cs">
+      <DependentUpon>DismissScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameSubViews\HireScreen.xaml.cs">
+      <DependentUpon>HireScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SumConverter.cs" />
     <Compile Include="Models\SetupInfo.cs" />
     <Compile Include="Views\FactionSetup.xaml.cs">
@@ -129,6 +135,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FactionSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameSubViews\DismissScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GameSubViews\HireScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

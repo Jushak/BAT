@@ -58,5 +58,9 @@
     <system:String x:Key="Population">Population</system:String>
     <system:String x:Key="Nobles">Nobles</system:String>
     <system:String x:Key="Farmers">Farmers</system:String>
+    <system:String x:Key="btnProceed">Proceed</system:String>
+    <system:String x:Key="btnCancel">Cancel</system:String>
+    <system:String x:Key="lblOptions">Options</system:String>
+    <system:String x:Key="tglPaySeverance">1 Goods worth of severance pay</system:String>
     <system:String x:Key="txtIntroduction">Apocalypse&#13;&#13;The end of the world as know it.&#13;&#13;While the accounts of what exactly happened during the Apocalyptic Times differ wildly from culture to culture, there is one thing that all sources agree with: people truly believed that the end of mankind had come.&#13;&#13;While prayers to old gods seemingly fell to deaf ears, it was the new gods that brought the light of salvation in mankind's darkest hour. Whether the old gods were angry, impotent, non-existent or simply now manifested in new forms to lead mankind to a new era is a debate for Godspeakers. For the common man the only thing that matters is that the new gods answered and that we survived.</system:String>
     </ResourceDictionary>

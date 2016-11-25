@@ -284,6 +284,9 @@ namespace BAT_WPF.Models
             set
             {
                 warriors_ = value;
+                NotifyPropertyChanged("Warriors");
+                NotifyPropertyChanged("OuterPatrolMax");
+                NotifyPropertyChanged("InnerPatrolMax");
             }
         }
 
@@ -825,7 +828,7 @@ namespace BAT_WPF.Models
         private void calculateWarriorMax()
         {
             // Placeholder formula. Maximum number of elite warriors is either current number or 1.25% of population, whichever is higher.
-            warriorsMax_ = Math.Max(warriors_,(int)(Math.Floor(population_ * 0.0125)));
+            warriorsMax_ = Math.Max(warriors_,(int)(Math.Floor(population_ * 0.025)));
         }
 
         private void calculateFarmers()

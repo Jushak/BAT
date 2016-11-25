@@ -1,0 +1,26 @@
+﻿<Window x:Class="BAT_WPF.Views.HireScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BAT_WPF.Views"
+        mc:Ignorable="d"
+        Title="HireScreen" Height="200" Width="400" WindowStyle="None"
+        Background="Khaki">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <StackPanel Orientation="Vertical">
+            <Label Content="{DynamicResource ResourceKey=HireWarriors}" FontSize="20" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Slider Name="HireSlider" Value="{Binding Warriors, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Minimum="{Binding Warriors, Mode=OneTime}" Maximum="{Binding WarriorsMax, Mode=OneTime}" TickFrequency="1" IsSnapToTickEnabled="true" Width="100"/>
+                <TextBox Text="{Binding ElementName=HireSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="btnProceed" Content="{DynamicResource ResourceKey=btnProceed}" Width="50" Click="btnProceed_Click"/>
+                <Button Name="btnCancel" Content="{DynamicResource ResourceKey=btnCancel}" Width="50" Click="btnCancel_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
