@@ -13,14 +13,8 @@
     </UserControl.DataContext>
 
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="30" Background="Khaki">
-            <TextBlock Margin="5" Text="{Binding FactionName}" ></TextBlock>
-            <Button x:Name="BtnOptions" HorizontalAlignment="Right" Margin="0,5,5,5" Click="BtnOptions_Click" Content="Options"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock x:Name="TxtSeason" Margin="5" Text="{Binding Season}" />
-                <Label>in</Label>
-                <TextBlock x:Name="TxtYear" Margin="5" Text="{Binding Year}" ><Run Text="B.A."/></TextBlock>
-            </StackPanel>
+        <Grid DockPanel.Dock="Top">
+            <Border Name="ViewsBorder" Height="490" Width="860"/>
         </Grid>
         <DockPanel DockPanel.Dock="Bottom" Height="150" Background="Khaki">
             <DockPanel DockPanel.Dock="Top" Height="30" Width="740" Background="Aqua">
@@ -51,22 +45,6 @@
                 <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Council portraits here!"/></TextBlock>
             </Grid>
         </DockPanel>
-        <Grid DockPanel.Dock="Left" Width="60" Background="Khaki">
-            <Button Name="BtnPass" VerticalAlignment="Top" HorizontalAlignment="Center" Click="BtnPass_Click">Pass</Button>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button x:Name="BtnAgriculture" Click="BtnAgriculture_Click" Content="{DynamicResource ResourceKey=btnAgriculture}"/>
-                <Button x:Name="BtnDiplomacy" Click="BtnDiplomacy_Click" Content="{DynamicResource ResourceKey=btnDiplomacy}"/>
-                <Button x:Name="BtnTrade" Click="BtnTrade_Click" Content="{DynamicResource ResourceKey=btnTrade}"/>
-                <Button x:Name="BtnMilitia" Click="BtnMilitia_Click" Content="{DynamicResource ResourceKey=btnMilitia}"/>
-                <Button x:Name="BtnOverview" Click="BtnOverview_Click" Content="{DynamicResource ResourceKey=btnOverview}"/>
-                <Button x:Name="BtnFaith" Click="BtnFaith_Click" Content="{DynamicResource ResourceKey=btnFaith}"/>
-                <Button x:Name="BtnExploration" Click="BtnExploration_Click" Content="{DynamicResource ResourceKey=btnExploration}"/>
-            </StackPanel>
-        </Grid>
-        <Grid DockPanel.Dock="Right" Width="60" Background="Khaki"/>
-        <Grid>
-            <Border x:Name="ViewsBorder" Width="740" Height="460"/>
-        </Grid>
 
     </DockPanel>
 </UserControl>

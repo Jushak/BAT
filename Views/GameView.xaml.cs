@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BAT_WPF.Logic;
+using BAT_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,93 +14,90 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BAT_WPF.Views;
-using BAT_WPF.Models;
-using BAT_WPF.Logic;
 
-namespace BAT_WPF
-{    
+namespace BAT_WPF.Views
+{
     /// <summary>
-    /// Interaction logic for GameScreen.xaml
+    /// Interaction logic for GameView.xaml
     /// </summary>
-    public partial class GameScreen : UserControl
+    public partial class GameView : UserControl
     {
-        GameInfo gameInfo_;
-        GameLogic gameLogic_;
-        Border parentBorder_;
-
-        public GameScreen( GameInfo info, GameLogic logic, Border parent )
+        Border grandParentBorder_;
+        GameInfo info_;
+        GameLogic logic_;
+        public GameView(GameInfo info, GameLogic logic, Border border)
         {
             InitializeComponent();
-            gameInfo_ = info;
-            gameLogic_ = logic;
-            parentBorder_ = parent;
-            ViewsBorder.Child = new GameView(gameInfo_, gameLogic_, parentBorder_);
-            DataContext = gameInfo_;
-            
+            info_ = info;
+            logic_ = logic;
+            grandParentBorder_ = border;
+            SubViewsBorder.Child = new OverviewScreen();
         }
 
         // Open Options-dialog
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptionsDialog popup = new OptionsDialog( parentBorder_, gameInfo_ );
+            OptionsDialog popup = new OptionsDialog(grandParentBorder_, info_);
             popup.ShowDialog();
         }
-        
-        /*
+
         // Change current frame page to Agriculture screen.
         private void BtnAgriculture_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new AgricultureScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Diplomacy screen.
         private void BtnDiplomacy_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new DiplomacyScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Trade screen.
         private void BtnTrade_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new TradeScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Militia screen.
         private void BtnMilitia_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new MilitiaScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Overview screen.
         private void BtnOverview_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new OverviewScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Faith screen.
         private void BtnFaith_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new FaithScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         // Change current frame page to Exploration screen.
         private void BtnExploration_Click(object sender, RoutedEventArgs e)
         {
             UserControl current = new ExplorationScreen();
-            ViewsBorder.Child = current;
+            SubViewsBorder.Child = current;
         }
 
         private void BtnPass_Click(object sender, RoutedEventArgs e)
         {
-            gameInfo_.advanceSeason();
+            info_.advanceSeason();
+            Random rnd = new Random();
+            if ( rnd.Next(1, 10) > 5)
+            {
+                grandParentBorder_.Child = new EventView(info_, logic_, grandParentBorder_);
+            }
         }
-        */
     }
 }

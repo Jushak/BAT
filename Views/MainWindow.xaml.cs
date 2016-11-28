@@ -56,8 +56,6 @@ namespace BAT_WPF
 
         void dataLoader()
         {
-            // Test: Simulate loading all the data by sleeping
-            Thread.Sleep(5000);
             // TODO: Add all the items that need to load.
             GameData data = GameData.Instance;
             this.Dispatcher.Invoke(loadingDone);

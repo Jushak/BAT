@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="BAT_WPF.Views.EventView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BAT_WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="490" d:DesignWidth="860"
+             Background="Khaki">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="This is the event screen!" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Label Content="Currently events are not implemented. This is a test screen for transition testing." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Press button below to continue playing." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Name="btnProceed" Content="Proceed" Width=" 75" Click="btnProceed_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
