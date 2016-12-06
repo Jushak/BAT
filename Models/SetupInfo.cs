@@ -6,78 +6,82 @@ using System.Threading.Tasks;
 
 namespace BAT_WPF.Models
 {
+    /// <summary>
+    /// Class used to store temporary info collected while setting up a new game.
+    /// </summary>
     public class SetupInfo : InfoBase
     {
-        ushort year_;
-        string factionName_;
-        Faith factionFaith_;
-        Int16 genderDominance_;
-
-        
+        ushort year;
+        string factionName;
+        Faith factionFaith;
+        Int16 genderDominance;
 
         #region Constructors
 
+        /// <summary>
+        /// Basic constructor for SetupInfo.
+        /// </summary>
         public SetupInfo()
         {
-            year_ = 101;
-            factionName_ = "";
-            factionFaith_ = new Faith();
-            genderDominance_ = 50;
+            Year = 101;
+            FactionName = "";
+            FactionFaith = new Faith();
+            GenderDominance = 50;
         }
 
         #endregion
 
         #region Getters and setters
 
-        public ushort Year_
+        public ushort Year
         {
             get
             {
-                return year_;
+                return year;
             }
 
             set
             {
-                year_ = value;
+                year = value;
             }
         }
 
-        public string FactionName_
+        public string FactionName
         {
             get
             {
-                return factionName_;
+                return factionName;
             }
 
             set
             {
-                factionName_ = value;
+                factionName = value;
             }
         }
 
-        public Faith FactionFaith_
+        public Faith FactionFaith
         {
             get
             {
-                return factionFaith_;
+                return factionFaith;
             }
 
             set
             {
-                factionFaith_ = value;
+                factionFaith = value;
             }
         }
 
-        public short GenderDominance_
+        public short GenderDominance
         {
             get
             {
-                return genderDominance_;
+                return genderDominance;
             }
 
             set
             {
-                genderDominance_ = value;
+                genderDominance = value;
             }
         }
 

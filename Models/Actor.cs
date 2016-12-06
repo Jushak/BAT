@@ -11,31 +11,31 @@ namespace BAT_WPF.Models
      */
     public class Actor
     {
-        string name_;
+        string name;
 
         #region Constructors
         public Actor()
         {
-            Name_ = "TestActor";
+            name = "TestActor";
         }
 
-        public Actor(string name)
+        public Actor(string actorName)
         {
-            Name_ = name;
+            name = actorName;
         }
         #endregion
 
         #region Getters and setters
-        public string Name_
+        public string Name
         {
             get
             {
-                return name_;
+                return name;
             }
 
             set
             {
-                name_ = value;
+                name = value;
             }
         }
         #endregion

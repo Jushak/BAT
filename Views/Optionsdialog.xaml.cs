@@ -25,13 +25,13 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class OptionsDialog : Window
     {
-        Border parentBorder_;
-        GameInfo info_;
+        Border parentBorder;
+        GameInfo gameInfo;
 
-        public OptionsDialog( Border parent, GameInfo game )
+        public OptionsDialog( Border parent, GameInfo info )
         {
-            parentBorder_ = parent;
-            info_ = game;
+            parentBorder = parent;
+            gameInfo = info;
             InitializeComponent();
         }
 
@@ -54,11 +54,11 @@ namespace BAT_WPF.Views
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "XML file (*.xml)|*.xml";
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            saveFileDialog.FileName = info_.FactionName + "_" + info_.Year;
+            saveFileDialog.FileName = gameInfo.FactionName + "_" + gameInfo.Year;
             if(saveFileDialog.ShowDialog() == true)
             {
                 GameSerializer saver = new GameSerializer();
-                saver.serializeFile(info_, saveFileDialog.FileName);
+                saver.serializeFile(gameInfo, saveFileDialog.FileName);
             }
             this.Close();
         }
@@ -73,7 +73,7 @@ namespace BAT_WPF.Views
             {
                 GameSerializer loader = new GameSerializer();
                 GameInfo info = loader.deserializeFile(openFileDialog.FileName);
-                parentBorder_.Child = new GameScreen( info, new Logic.GameLogic(info), parentBorder_ );
+                parentBorder.Child = new GameScreen( gameInfo, new Logic.GameLogic(), parentBorder);
                 this.Close();
             }
         }
@@ -83,7 +83,7 @@ namespace BAT_WPF.Views
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure? Any unsaved progress will be lost.", "Return to main menu? ", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                parentBorder_.Child = new Mainmenu(parentBorder_);
+                parentBorder.Child = new Mainmenu(parentBorder);
                 this.Close();
             }
         }

@@ -9,11 +9,10 @@ namespace BAT_WPF.Logic
 {
     public class GameLogic
     {
-        GameInfo info_;
         #region Constructors
-        public GameLogic( GameInfo game )
+        public GameLogic()
         {
-            info_ = game;
+            
         }
         #endregion
     }

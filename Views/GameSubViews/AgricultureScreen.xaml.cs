@@ -20,7 +20,7 @@ namespace BAT_WPF.Views
     /// Interaction logic for AgricultureScreen.xaml
     /// </summary>
 
-    /* 
+    /** 
      * Agriculture is complex thing, so some real world equivalents need to be considered.
      * 
      * Notes on grazing: https://en.wikipedia.org/wiki/Livestock_grazing_comparison
@@ -55,6 +55,7 @@ namespace BAT_WPF.Views
         {
             InitializeComponent();
         }
+
 
         private void btnSlaughter_Click(object sender, RoutedEventArgs e)
         {

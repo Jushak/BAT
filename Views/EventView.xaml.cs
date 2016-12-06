@@ -22,21 +22,21 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class EventView : UserControl
     {
-        GameInfo info_;
-        GameLogic logic_;
-        Border border_;
+        GameInfo gameInfo;
+        GameLogic gameLogic;
+        Border parentBorder;
 
-        public EventView(GameInfo info, GameLogic logic, Border border )
+        public EventView(GameInfo info, GameLogic logic, Border parent )
         {
             InitializeComponent();
-            info_ = info;
-            logic_ = logic;
-            border_ = border;
+            gameInfo = info;
+            gameLogic = logic;
+            parentBorder = parent;
         }
 
         private void btnProceed_Click(object sender, RoutedEventArgs e)
         {
-            ((Border)(this.Parent)).Child = new GameScreen( info_, logic_, border_ );
+            ((Border)(this.Parent)).Child = new GameScreen( gameInfo, gameLogic, parentBorder );
         }
     }
 }

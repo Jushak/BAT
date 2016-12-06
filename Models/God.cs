@@ -11,132 +11,136 @@ namespace BAT_WPF.Models
     [Serializable()]
     public class God : Actor
     {
-        List<String> portfolio_;
-        List<String> titles_;
-        List<String> combatFeats_;
-        List<String> favoredSkills_;
-        UInt16 genderSplit_;
-        Boolean priests_;
-        Boolean priestesses_;
+        List<String> portfolio;
+        List<String> titles;
+        List<String> combatFeats;
+        List<String> favoredSkills;
+        UInt16 genderSplit;
+        Boolean priests;
+        Boolean priestesses;
+
+        
 
         #region Constructors
         public God()
             : base("TestGod")
         {
-            portfolio_ = new List<String>();
-            titles_ = new List<String>();
-            combatFeats_ = new List<String>();
-            favoredSkills_ = new List<String>();
-            genderSplit_ = 50;
-            Priests_ = true;
-            Priestesses_ = true;
+            Portfolio = new List<String>();
+            Titles = new List<String>();
+            CombatFeats = new List<String>();
+            FavoredSkills = new List<String>();
+            GenderSplit = 50;
+            Priests = true;
+            Priestesses = true;
         }
 
         public God(string name) 
             : base(name)
         {
-            portfolio_ = new List<String>();
-            titles_ = new List<String>();
-            combatFeats_ = new List<String>();
-            favoredSkills_ = new List<String>();
-            genderSplit_ = 50;
-            Priests_ = true;
-            Priestesses_ = true;
+            Portfolio = new List<String>();
+            Titles = new List<String>();
+            CombatFeats = new List<String>();
+            FavoredSkills = new List<String>();
+            GenderSplit= 50;
+            Priests = true;
+            Priestesses = true;
         }
 
         #endregion
 
         #region Getters and setters
-        public List<string> Portfolio_
+
+        public List<string> Portfolio
         {
             get
             {
-                return portfolio_;
+                return portfolio;
             }
 
             set
             {
-                portfolio_ = value;
+                portfolio = value;
             }
         }
 
-        public List<string> Titles_
+        public List<string> Titles
         {
             get
             {
-                return titles_;
+                return titles;
             }
 
             set
             {
-                titles_ = value;
+                titles = value;
             }
         }
 
-        public List<string> CombatFeats_
+        public List<string> CombatFeats
         {
             get
             {
-                return combatFeats_;
+                return combatFeats;
             }
 
             set
             {
-                combatFeats_ = value;
+                combatFeats = value;
             }
         }
 
-        public List<string> FavoredSkills_
+        public List<string> FavoredSkills
         {
             get
             {
-                return favoredSkills_;
+                return favoredSkills;
             }
 
             set
             {
-                favoredSkills_ = value;
+                favoredSkills = value;
             }
         }
 
-        public ushort GenderSplit_
+        public ushort GenderSplit
         {
             get
             {
-                return genderSplit_;
+                return genderSplit;
             }
 
             set
             {
-                genderSplit_ = value;
+                genderSplit = value;
             }
         }
 
-        public bool Priests_
+        public bool Priests
         {
             get
             {
-                return priests_;
+                return priests;
             }
 
             set
             {
-                priests_ = value;
+                priests = value;
             }
         }
 
-        public bool Priestesses_
+        public bool Priestesses
         {
             get
             {
-                return priestesses_;
+                return priestesses;
             }
 
             set
             {
-                priestesses_ = value;
+                priestesses = value;
             }
         }
+
         #endregion
 
     }

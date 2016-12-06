@@ -11,9 +11,6 @@ namespace BAT_WPF.Models
      */
     public class Faction
     {
-        string name_;
-        Faith faith_;
-        List<Leader> leaders_;
-        List<Leader> councilors_;
+        string name;
     }
 }

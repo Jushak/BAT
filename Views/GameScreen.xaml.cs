@@ -23,25 +23,25 @@ namespace BAT_WPF
     /// </summary>
     public partial class GameScreen : UserControl
     {
-        GameInfo gameInfo_;
-        GameLogic gameLogic_;
-        Border parentBorder_;
+        GameInfo gameInfo;
+        GameLogic gameLogic;
+        Border parentBorder;
 
-        public GameScreen( GameInfo info, GameLogic logic, Border parent )
+        public GameScreen( GameInfo GameInfo, GameLogic GameLogic, Border Parent )
         {
             InitializeComponent();
-            gameInfo_ = info;
-            gameLogic_ = logic;
-            parentBorder_ = parent;
-            ViewsBorder.Child = new GameView(gameInfo_, gameLogic_, parentBorder_);
-            DataContext = gameInfo_;
+            gameInfo = GameInfo;
+            gameLogic = GameLogic;
+            parentBorder = Parent;
+            ViewsBorder.Child = new GameView(gameInfo, gameLogic, parentBorder);
+            DataContext = gameInfo;
             
         }
 
         // Open Options-dialog
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptionsDialog popup = new OptionsDialog( parentBorder_, gameInfo_ );
+            OptionsDialog popup = new OptionsDialog( parentBorder, gameInfo );
             popup.ShowDialog();
         }
         

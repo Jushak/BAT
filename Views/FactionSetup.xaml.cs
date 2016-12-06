@@ -22,32 +22,32 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class FactionSetup : UserControl
     {
-        UInt16 index_;
-        List<UserControl> setupControls_;
-        Border parentBorder_;
-        SetupInfo setup_;
+        UInt16 index;
+        List<UserControl> setupControls;
+        Border parentBorder;
+        SetupInfo setupInfo;
 
         public FactionSetup( Border parent )
         {
-            setup_ = new SetupInfo();
-            setupControls_ = new List<UserControl>();
-            setupControls_.Add(new IntroductionScreen());
-            setupControls_.Add(new FinalizeScreen( setup_ ));
-            DataContext = setup_;
-            index_ = 0;
+            setupInfo = new SetupInfo();
+            setupControls = new List<UserControl>();
+            setupControls.Add(new IntroductionScreen());
+            setupControls.Add(new FinalizeScreen(setupInfo));
+            DataContext = setupInfo;
+            index = 0;
             InitializeComponent();
-            ViewsBorder.Child = setupControls_.ElementAt(index_);
+            ViewsBorder.Child = setupControls.ElementAt(index);
             btnBack.IsEnabled = false;
             btnStart.IsEnabled = false;
             btnStart.Visibility = System.Windows.Visibility.Hidden; 
-            parentBorder_ = parent;
+            parentBorder = parent;
         }
 
         // Navigate back to earlier setup page. Enable/Disable buttons as necessary.
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            index_--;
-            if ( index_ == 0 )
+            index--;
+            if ( index == 0 )
             {
                 btnBack.IsEnabled = false;
                 if ( btnNext.IsEnabled == false )
@@ -56,14 +56,14 @@ namespace BAT_WPF.Views
                     btnStart.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
-            ViewsBorder.Child = setupControls_.ElementAt(index_);
+            ViewsBorder.Child = setupControls.ElementAt(index);
         }
 
         // Navigate to next setup page. Enable / Disable buttons as necessary.
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
-            index_++;
-            if ((index_ >= setupControls_.Count() - 1))
+            index++;
+            if ((index >= setupControls.Count() - 1))
             {
                 btnNext.IsEnabled = false;
                 if (btnBack.IsEnabled == false)
@@ -73,20 +73,20 @@ namespace BAT_WPF.Views
                     btnStart.Visibility = System.Windows.Visibility.Visible;
                 }
             }
-            ViewsBorder.Child = setupControls_.ElementAt(index_);
+            ViewsBorder.Child = setupControls.ElementAt(index);
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            if ( setup_.FactionName_.Equals("") )
+            if (setupInfo.FactionName.Equals("") )
             {
-                setup_.FactionName_ = "PlaceHolderName";
+                setupInfo.FactionName = "PlaceHolderName";
             }
-            GameInfo gameInfo = new GameInfo( setup_.FactionName_, setup_.Year_ );
-            GameLogic gameLogic = new GameLogic(gameInfo);
+            GameInfo gameInfo = new GameInfo(setupInfo.FactionName, setupInfo.Year );
+            GameLogic gameLogic = new GameLogic();
             DataContext = gameInfo;
-            GameScreen game = new GameScreen(gameInfo, gameLogic, parentBorder_);
-            parentBorder_.Child = game;
+            GameScreen game = new GameScreen(gameInfo, gameLogic, parentBorder);
+            parentBorder.Child = game;
         }
     }
 }

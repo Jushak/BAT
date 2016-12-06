@@ -16,7 +16,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="{DynamicResource ResourceKey=lblEnterFacName}" />
             <TextBox Name="tBoxFacName" AcceptsReturn="False" AcceptsTab="False" AllowDrop="False"
-                     AutoWordSelection="False" MaxLines="1" MaxLength="15" Text="{Binding FactionName_}" ></TextBox>
+                     AutoWordSelection="False" MaxLines="1" MaxLength="15" Text="{Binding FactionName}" ></TextBox>
         </StackPanel>
     </StackPanel>
 </UserControl>

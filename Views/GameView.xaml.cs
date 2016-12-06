@@ -22,22 +22,22 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class GameView : UserControl
     {
-        Border grandParentBorder_;
-        GameInfo info_;
-        GameLogic logic_;
+        Border grandParentBorder;
+        GameInfo gameInfo;
+        GameLogic gameLogic;
         public GameView(GameInfo info, GameLogic logic, Border border)
         {
             InitializeComponent();
-            info_ = info;
-            logic_ = logic;
-            grandParentBorder_ = border;
+            gameInfo = info;
+            gameLogic = logic;
+            grandParentBorder = border;
             SubViewsBorder.Child = new OverviewScreen();
         }
 
         // Open Options-dialog
         private void BtnOptions_Click(object sender, RoutedEventArgs e)
         {
-            OptionsDialog popup = new OptionsDialog(grandParentBorder_, info_);
+            OptionsDialog popup = new OptionsDialog(grandParentBorder, gameInfo);
             popup.ShowDialog();
         }
 
@@ -92,11 +92,11 @@ namespace BAT_WPF.Views
 
         private void BtnPass_Click(object sender, RoutedEventArgs e)
         {
-            info_.advanceSeason();
+            gameInfo.advanceSeason();
             Random rnd = new Random();
             if ( rnd.Next(1, 10) > 5)
             {
-                grandParentBorder_.Child = new EventView(info_, logic_, grandParentBorder_);
+                grandParentBorder.Child = new EventView(gameInfo, gameLogic, grandParentBorder);
             }
         }
     }

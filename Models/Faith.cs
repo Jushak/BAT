@@ -14,144 +14,146 @@ namespace BAT_WPF.Models
     [Serializable()]
     public class Faith
     {
-        string name_;
-        string adjective_;
-        string plural_;
-        List<string> derogatoryAdjective_;
-        List<string> derogatoryPlural_;
-        List<string> derogatorySingle_;
-        List<string> pantheon_;
-        God mainGod_;
+        string name;
+        string adjective;
+        string plural;
+        List<string> derogatoryAdjective;
+        List<string> derogatoryPlural;
+        List<string> derogatorySingle;
+        List<string> pantheon;
+        God mainGod;
 
         #region Constructors
         public Faith()
         {
-            Name_ = "TestFaith";
-            Adjective_ = "Tester";
-            Plural_ = "Testers";
-            DerogatoryAdjective_ = new List<String>();
-            DerogatoryPlural_ = new List<String>();
-            DerogatorySingle_ = new List<String>();
-            MainGod_ = new God();
+            Name = "TestFaith";
+            Adjective = "Tester";
+            Plural = "Testers";
+            DerogatoryAdjective = new List<String>();
+            DerogatoryPlural = new List<String>();
+            DerogatorySingle = new List<String>();
+            MainGod = new God();
         }
 
         public Faith( string name )
         {
-            Name_ = name+"'s pantheon";
-            Adjective_ = name + "n";
-            Plural_ = name + "i";
-            DerogatoryAdjective_ = new List<String>();
-            DerogatoryPlural_ = new List<String>();
-            DerogatorySingle_ = new List<String>();
-            MainGod_ = new God(name);
+            name = name+"'s pantheon";
+            Adjective = name + "n";
+            Plural = name + "i";
+            DerogatoryAdjective = new List<String>();
+            DerogatoryPlural = new List<String>();
+            DerogatorySingle = new List<String>();
+            MainGod = new God(name);
         }
 
         #endregion
 
         #region Getters and setters
-        public string Name_
+
+        public string Name
         {
             get
             {
-                return name_;
+                return name;
             }
 
             set
             {
-                name_ = value;
+                name = value;
             }
         }
 
-        public string Adjective_
+        public string Adjective
         {
             get
             {
-                return adjective_;
+                return adjective;
             }
 
             set
             {
-                adjective_ = value;
+                adjective = value;
             }
         }
 
-        public string Plural_
+        public string Plural
         {
             get
             {
-                return plural_;
+                return plural;
             }
 
             set
             {
-                plural_ = value;
+                plural = value;
             }
         }
 
-        public List<string> DerogatoryAdjective_
+        public List<string> DerogatoryAdjective
         {
             get
             {
-                return derogatoryAdjective_;
+                return derogatoryAdjective;
             }
 
             set
             {
-                derogatoryAdjective_ = value;
+                derogatoryAdjective = value;
             }
         }
 
-        public List<string> DerogatoryPlural_
+        public List<string> DerogatoryPlural
         {
             get
             {
-                return derogatoryPlural_;
+                return derogatoryPlural;
             }
 
             set
             {
-                derogatoryPlural_ = value;
+                derogatoryPlural = value;
             }
         }
 
-        public List<string> DerogatorySingle_
+        public List<string> DerogatorySingle
         {
             get
             {
-                return derogatorySingle_;
+                return derogatorySingle;
             }
 
             set
             {
-                derogatorySingle_ = value;
+                derogatorySingle = value;
             }
         }
 
-        public List<String> Pantheon_
+        public List<string> Pantheon
         {
             get
             {
-                return pantheon_;
+                return pantheon;
             }
 
             set
             {
-                pantheon_ = value;
+                pantheon = value;
             }
         }
 
-        public God MainGod_
+        public God MainGod
         {
             get
             {
-                return mainGod_;
+                return mainGod;
             }
 
             set
             {
-                mainGod_ = value;
+                mainGod = value;
             }
         }
+
         #endregion
 
     }

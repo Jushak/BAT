@@ -24,18 +24,18 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class Mainmenu : UserControl
     {
-        Border parentBorder_;
+        Border parentBorder;
         public Mainmenu(Border parent)
         {
-            parentBorder_ = parent;
+            parentBorder = parent;
             InitializeComponent();
         }
 
         // Start a new game.
         private void Btn_StartNew_Click(object sender, RoutedEventArgs e)
         {
-            FactionSetup setup = new FactionSetup( parentBorder_ );
-            parentBorder_.Child = setup;
+            FactionSetup setup = new FactionSetup( parentBorder );
+            parentBorder.Child = setup;
         }
 
         // Load an existing game.
@@ -48,7 +48,7 @@ namespace BAT_WPF.Views
             {
                 GameSerializer loader = new GameSerializer();
                 GameInfo info = loader.deserializeFile(openFileDialog.FileName);
-                parentBorder_.Child = new GameScreen(info, new Logic.GameLogic(info), parentBorder_);
+                parentBorder.Child = new GameScreen(info, new Logic.GameLogic(), parentBorder);
             }
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -9,176 +11,196 @@ public enum Seasons { Seeding, Growing, Harvesting, Decaying, Sleeping };
 
 namespace BAT_WPF.Models
 {
-    /*
-     * Model for game-specific info such as current year, season, player faction's name etc.
-     * Includes both values shown in different sections of the UI as well as hidden info.
-     */
+    
     [XmlRootAttribute("BATSaveFile", Namespace = "BAT_Data")]
     [Serializable()]
+    /// <summary>
+    /// Model for game-specific info such as current year, season, player faction's name etc.
+    /// Includes both values shown in different sections of the UI as well as hidden info.
+    /// </summary>
     public class GameInfo : InfoBase
     {
-        int year_;
-        public Seasons season_;
-        string factionName_;
+        #region Variables
+        int year;
+        public Seasons season;
+        string factionName;
         Boolean firstActionUsed;
-        List<Leader> leaders_;
-        List<Leader> councilors_;
-        int population_;
-        int goods_;
-        int food_;
-        int magic_;
-        int genderDominance_;
+        List<Leader> leaders;
+        List<Leader> councilors;
+        int population;
+        int goods;
+        int food;
+        int magic;
+        int genderDominance;
         
-
         // Agriculture: All the variables that have to do with Agriculture screen 
-        int totalLand_;
-        int wheatFields_;
-        int barleyFields_;
-        int ryeFields_;
-        int forestLand_;
-        int pastures_;
-        int sheep_;
-        int cows_;
-        int pigs_;
-        int horses_;
+        int totalLand;
+        int wheatFields;
+        int barleyFields;
+        int ryeFields;
+        int forestLand;
+        int pastures;
+        int sheep;
+        int cows;
+        int pigs;
+        int horses;
 
         // Maximum values for sliders in Agriculture-screen.
-        int pastureMax_;
-        int wheatMax_;
-        int barleyMax_;
-        int ryeMax_;
+        int pastureMax;
+        int wheatMax;
+        int barleyMax;
+        int ryeMax;
         
         // Diplomacy:
 
         // Trade:
 
         // Militia:
-        int warriors_;
+        int warriors;
 
         // Maximum values for sliders in agriculture-screen.
-        int warriorsMax_;
-        int innerPatrol_;
-        int innerPatrolMax_;
-        int outerPatrol_;
-        int outerPatrolMax_;
-        bool ramparts_;
-        bool watchTower_;
-        bool wall_;
-        bool moat_;
+        int warriorsMax;
+        int innerPatrol;
+        int innerPatrolMax;
+        int outerPatrol;
+        int outerPatrolMax;
+        bool ramparts;
+        bool watchTower;
+        bool wall;
+        bool moat;
 
         // Overview:
-        int children_;
-        int crafters_;
-        int hunters_;
-        int traders_;
-        int nobles_;
-        int farmers_;
+        int children;
+        int crafters;
+        int hunters;
+        int traders;
+        int nobles;
+        int farmers;
 
         // Faith:
-        
+
         // Exploration:      
 
+        #endregion
+
         #region Constructors
+
+        /// <summary>
+        /// Basic constructor for GameInfo.
+        /// </summary>
         public GameInfo()
         {
-            year_ = 100;
-            season_ = Seasons.Seeding;
-            factionName_ = "TestFaction";
+            year = 100;
+            season = Seasons.Seeding;
+            factionName = "TestFaction";
             firstActionUsed = false;
-            leaders_ = new List<Leader>();
-            councilors_ = new List<Leader>();
-            population_ = 800;
-            goods_ = 50;
-            food_ = 800;
-            warriors_ = 10;
-            magic_ = 3;
-            genderDominance_ = 50;
+            leaders = new List<Leader>();
+            councilors = new List<Leader>();
+            population = 800;
+            goods = 50;
+            food = 800;
+            warriors = 10;
+            magic = 3;
+            genderDominance = 50;
 
-            totalLand_ = 650;
-            forestLand_ = 200;
-            wheatFields_ = 100;
-            barleyFields_ = 100;
-            ryeFields_ = 100;
-            pastures_ = 150;
-            sheep_ = 1000;
-            cows_ = 800;
-            pigs_ = 2000;
-            horses_ = 50;
-            pastureMax_ = 0;
-            wheatMax_ = 0;
-            barleyMax_ = 0;
-            ryeMax_ = 0;
+            totalLand = 650;
+            forestLand = 200;
+            wheatFields = 100;
+            barleyFields = 100;
+            ryeFields = 100;
+            pastures = 150;
+            sheep = 1000;
+            cows = 800;
+            pigs = 2000;
+            horses = 50;
+            pastureMax = 0;
+            wheatMax = 0;
+            barleyMax = 0;
+            ryeMax = 0;
 
-            warriorsMax_ = 15;
-            innerPatrol_ = 3;
-            innerPatrolMax_ = 4;
-            outerPatrol_ = 2;
-            outerPatrolMax_ = 3;
-            ramparts_ = false;
-            watchTower_ = false;
-            wall_ = false;
-            moat_ = false;
+            warriorsMax = 15;
+            innerPatrol = 3;
+            innerPatrolMax = 4;
+            outerPatrol = 2;
+            outerPatrolMax = 3;
+            ramparts = false;
+            watchTower = false;
+            wall = false;
+            moat = false;
 
-            children_ = 300;
-            crafters_ = 10;
-            hunters_ = 20;
-            traders_ = 10;
-            nobles_ = 30;
-            farmers_ = 400;
+            children = 300;
+            crafters = 10;
+            hunters = 20;
+            traders = 10;
+            nobles = 30;
+            farmers = 400;
+
+            for (int i = 0; i < 30; i++)
+                leaders.Add(createRandomLeader());
+            for (int i = 0; i < 7; i++)
+                councilors.Add(leaders[i]);
         }
 
         // Constructor for use with 
+        /// <summary>
+        /// Constructor for setting up the save file from a file.
+        /// </summary>
+        /// <param name="filename"></param>
         public GameInfo(string filename)
         {
             // TODO: Read data from savefile.
         }
-
-        // Debug constructor.
-        public GameInfo(string name, int year)
+        
+        /// <summary>
+        /// Debug constructor that takes name and starting year as input.
+        /// </summary>
+        /// <param name="Name">Name of the test faction</param>
+        /// <param name="Year">Starting year.</param>
+        public GameInfo(string Name, int Year)
         {
-            year_ = year;
-            season_ = Seasons.Seeding;
-            factionName_ = name;
-            leaders_ = new List<Leader>();
-            councilors_ = new List<Leader>();
-            population_ = 800;
-            goods_ = 50;
-            food_ = 800;
-            warriors_ = 10;
-            magic_ = 3;
-            genderDominance_ = 50;
+            year = Year;
+            season = Seasons.Seeding;
+            factionName = Name;
+            leaders = new List<Leader>();
+            councilors = new List<Leader>();
+            population = 800;
+            goods = 50;
+            food = 800;
+            warriors = 10;
+            magic = 3;
+            genderDominance = 50;
 
-            totalLand_ = 650;
-            forestLand_ = 200;
-            wheatFields_ = 100;
-            barleyFields_ = 100;
-            ryeFields_ = 100;
-            pastures_ = 150;
-            sheep_ = 1000;
-            cows_ = 800;
-            pigs_ = 2000;
-            horses_ = 50;
-            pastureMax_ = 0;
-            wheatMax_ = 0;
-            barleyMax_ = 0;
-            ryeMax_ = 0;
+            totalLand = 650;
+            forestLand = 200;
+            wheatFields = 100;
+            barleyFields = 100;
+            ryeFields = 100;
+            pastures = 150;
+            sheep = 1000;
+            cows = 800;
+            pigs = 2000;
+            horses = 50;
+            pastureMax = 0;
+            wheatMax = 0;
+            barleyMax = 0;
+            ryeMax = 0;
 
-            warriorsMax_ = 15;
-            innerPatrol_ = 3;
-            innerPatrolMax_ = 4;
-            outerPatrol_ = 2;
-            outerPatrolMax_ = 3;
-            ramparts_ = false;
-            watchTower_ = false;
-            wall_ = false;
-            moat_ = false;
+            warriorsMax = 15;
+            innerPatrol = 3;
+            innerPatrolMax = 4;
+            outerPatrol = 2;
+            outerPatrolMax = 3;
+            ramparts = false;
+            watchTower = false;
+            wall = false;
+            moat = false;
 
-            children_ = 300;
-            crafters_ = 10;
-            hunters_ = 20;
-            traders_ = 10;
-            nobles_ = 30;
-            farmers_ = 400;
+            children = 300;
+            crafters = 10;
+            hunters = 20;
+            traders = 10;
+            nobles = 30;
+            farmers = 400;
         }
         #endregion
 
@@ -187,12 +209,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return year_;
+                return year;
             }
 
             set
             {
-                year_ = value;
+                year = value;
             }
         }
 
@@ -200,12 +222,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return factionName_;
+                return factionName;
             }
 
             set
             {
-                factionName_ = value;
+                factionName = value;
             }
         }
 
@@ -213,12 +235,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return leaders_;
+                return leaders;
             }
 
             set
             {
-                leaders_ = value;
+                leaders = value;
             }
         }
 
@@ -226,12 +248,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return councilors_;
+                return councilors;
             }
 
             set
             {
-                councilors_ = value;
+                councilors = value;
             }
         }
 
@@ -239,12 +261,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return population_;
+                return population;
             }
 
             set
             {
-                population_ = value;
+                population = value;
             }
         }
 
@@ -252,12 +274,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return goods_;
+                return goods;
             }
 
             set
             {
-                goods_ = value;
+                goods = value;
             }
         }
 
@@ -265,12 +287,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return food_;
+                return food;
             }
 
             set
             {
-                food_ = value;
+                food = value;
             }
         }
 
@@ -278,12 +300,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return warriors_;
+                return warriors;
             }
 
             set
             {
-                warriors_ = value;
+                warriors = value;
                 NotifyPropertyChanged("Warriors");
                 NotifyPropertyChanged("OuterPatrolMax");
                 NotifyPropertyChanged("InnerPatrolMax");
@@ -294,12 +316,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return magic_;
+                return magic;
             }
 
             set
             {
-                magic_ = value;
+                magic = value;
             }
         }
 
@@ -307,12 +329,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return genderDominance_;
+                return genderDominance;
             }
 
             set
             {
-                genderDominance_ = value;
+                genderDominance = value;
             }
         }
 
@@ -320,12 +342,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return season_;
+                return season;
             }
 
             set
             {
-                season_ = value;
+                season = value;
             }
         }
 
@@ -346,12 +368,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return totalLand_;
+                return totalLand;
             }
 
             set
             {
-                totalLand_ = value;
+                totalLand = value;
             }
         }
 
@@ -359,12 +381,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return wheatFields_;
+                return wheatFields;
             }
 
             set
             {
-                wheatFields_ = value;
+                wheatFields = value;
                 NotifyPropertyChanged("WheatFields");
                 NotifyPropertyChanged("Pastures");
                 NotifyPropertyChanged("PastureMax");
@@ -377,12 +399,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return barleyFields_;
+                return barleyFields;
             }
 
             set
             {
-                barleyFields_ = value;
+                barleyFields = value;
                 NotifyPropertyChanged("BarleyFields");
                 NotifyPropertyChanged("Pastures");
                 NotifyPropertyChanged("PastureMax");
@@ -395,12 +417,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return ryeFields_;
+                return ryeFields;
             }
 
             set
             {
-                ryeFields_ = value;
+                ryeFields = value;
                 NotifyPropertyChanged("RyeFields");
                 NotifyPropertyChanged("Pastures");
                 NotifyPropertyChanged("PastureMax");
@@ -414,12 +436,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateForests();
-                return forestLand_;
+                return forestLand;
             }
 
             set
             {
-                forestLand_ = value;
+                forestLand = value;
             }
         }
 
@@ -428,12 +450,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculatePastures();
-                return pastures_;
+                return pastures;
             }
 
             set
             {
-                pastures_ = value;
+                pastures = value;
                 NotifyPropertyChanged("ForestLand");
                 NotifyPropertyChanged("Pastures");
                 NotifyPropertyChanged("WheatMax");
@@ -446,12 +468,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return sheep_;
+                return sheep;
             }
 
             set
             {
-                sheep_ = value;
+                sheep = value;
             }
         }
 
@@ -459,12 +481,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return cows_;
+                return cows;
             }
 
             set
             {
-                cows_ = value;
+                cows = value;
             }
         }
 
@@ -472,12 +494,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return pigs_;
+                return pigs;
             }
 
             set
             {
-                pigs_ = value;
+                pigs = value;
             }
         }
 
@@ -485,12 +507,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return horses_;
+                return horses;
             }
 
             set
             {
-                horses_ = value;
+                horses = value;
             }
         }
 
@@ -499,12 +521,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculatePastureMax();
-                return pastureMax_;
+                return pastureMax;
             }
 
             set
             {
-                pastureMax_ = value;
+                pastureMax = value;
             }
         }
 
@@ -513,12 +535,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateWheatMax();
-                return wheatMax_;
+                return wheatMax;
             }
 
             set
             {
-                wheatMax_ = value;
+                wheatMax = value;
             }
         }
 
@@ -527,12 +549,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateBarleyMax();
-                return barleyMax_;
+                return barleyMax;
             }
 
             set
             {
-                barleyMax_ = value;
+                barleyMax = value;
             }
         }
 
@@ -541,12 +563,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateRyeMax();
-                return ryeMax_;
+                return ryeMax;
             }
 
             set
             {
-                ryeMax_ = value;
+                ryeMax = value;
             }
         }
 
@@ -555,12 +577,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateWarriorMax();
-                return warriorsMax_;
+                return warriorsMax;
             }
 
             set
             {
-                warriorsMax_ = value;
+                warriorsMax = value;
             }
         }
 
@@ -568,12 +590,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return innerPatrol_;
+                return innerPatrol;
             }
 
             set
             {
-                innerPatrol_ = value;
+                innerPatrol = value;
                 NotifyPropertyChanged("OuterPatrolMax");
             }
         }
@@ -582,12 +604,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return outerPatrol_;
+                return outerPatrol;
             }
 
             set
             {
-                outerPatrol_ = value;
+                outerPatrol = value;
                 NotifyPropertyChanged("InnerPatrolMax");
             }
         }
@@ -596,12 +618,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return ramparts_;
+                return ramparts;
             }
 
             set
             {
-                ramparts_ = value;
+                ramparts = value;
             }
         }
 
@@ -609,12 +631,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return watchTower_;
+                return watchTower;
             }
 
             set
             {
-                watchTower_ = value;
+                watchTower = value;
             }
         }
 
@@ -622,12 +644,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return wall_;
+                return wall;
             }
 
             set
             {
-                wall_ = value;
+                wall = value;
             }
         }
 
@@ -635,12 +657,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return moat_;
+                return moat;
             }
 
             set
             {
-                moat_ = value;
+                moat = value;
             }
         }
 
@@ -649,12 +671,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateInnerPatrolMax();
-                return innerPatrolMax_;
+                return innerPatrolMax;
             }
 
             set
             {
-                innerPatrolMax_ = value;
+                innerPatrolMax = value;
             }
         }
 
@@ -663,12 +685,12 @@ namespace BAT_WPF.Models
             get
             {
                 calculateOuterPatrolMax();
-                return outerPatrolMax_;
+                return outerPatrolMax;
             }
 
             set
             {
-                outerPatrolMax_ = value;
+                outerPatrolMax = value;
             }
         }
 
@@ -676,12 +698,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return children_;
+                return children;
             }
 
             set
             {
-                children_ = value;
+                children = value;
             }
         }
 
@@ -689,12 +711,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return crafters_;
+                return crafters;
             }
 
             set
             {
-                crafters_ = value;
+                crafters = value;
             }
         }
 
@@ -702,12 +724,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return hunters_;
+                return hunters;
             }
 
             set
             {
-                hunters_ = value;
+                hunters = value;
             }
         }
 
@@ -715,12 +737,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return traders_;
+                return traders;
             }
 
             set
             {
-                traders_ = value;
+                traders = value;
             }
         }
 
@@ -728,12 +750,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return nobles_;
+                return nobles;
             }
 
             set
             {
-                nobles_ = value;
+                nobles = value;
             }
         }
 
@@ -742,41 +764,43 @@ namespace BAT_WPF.Models
             get
             {
                 calculateFarmers();
-                return farmers_;
+                return farmers;
             }
 
             set
             {
-                farmers_ = value;
+                farmers = value;
             }
         }
 
         #endregion
 
         #region Operations
-
-        // A helper function that moves the game forward to the next season and where necessary next year.
+        
+        /// <summary>
+        /// A helper function that moves the game forward to the next season and where necessary next year.
+        /// </summary>
         public void advanceSeason()
         {
             // Move to next season.
-            switch(season_)
+            switch(season)
             {
                 case Seasons.Seeding:
-                    season_ = Seasons.Growing;
+                    season = Seasons.Growing;
                     break;
                 case Seasons.Growing:
-                    season_ = Seasons.Harvesting;
+                    season = Seasons.Harvesting;
                     break;
                 case Seasons.Harvesting:
-                    season_ = Seasons.Decaying;
+                    season = Seasons.Decaying;
                     break;
                 case Seasons.Decaying:
-                    season_ = Seasons.Sleeping;
+                    season = Seasons.Sleeping;
                     break;
                 case Seasons.Sleeping:
-                    season_ = Seasons.Seeding;
+                    season = Seasons.Seeding;
                     // New year, advance year count and notify the UI to show it.
-                    year_++;
+                    year++;
                     this.NotifyPropertyChanged("year");
                     break;
             }
@@ -785,55 +809,134 @@ namespace BAT_WPF.Models
             firstActionUsed = false;
         }
 
+        #endregion
+
+        #region Creators
+
+        /// <summary>
+        /// Creator for completely random leader, using player faction's gender dominance to decide gender.
+        /// </summary>
+        /// <returns>A randomly generated Leader belonging to the player faction.</returns>
+        private Leader createRandomLeader()
+        {
+            Random random = new Random();
+            // Generate age via "dice rolls". Age = 10+6d10, for variation between 18 and 70, with average of 43.
+            int age = 10 + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11);
+
+            string faith = "testFaith";
+            char gender = 'g';
+            // TODO: Gods & decide Leader god(s) based on how much influence a given god has in the player's faction. 
+            List<String> gods = new List<String>();
+            gods.Add("testGod");             
+            // Decide leader gender based on gender dominance
+            if ( random.Next(1,101) > genderDominance)
+                gender = 'm';
+            else
+                gender = 'f';
+
+            string name = GameData.Instance.GeneratePlayerFactionActorName(gender);
+
+            Skill leadership = SkillGenerator(age);
+            Skill bargaining = SkillGenerator(age);
+            Skill combat = SkillGenerator(age);
+            Skill custom = SkillGenerator(age);
+            Skill magic = SkillGenerator(age);
+            Skill animals = SkillGenerator(age);
+            Skill plant = SkillGenerator(age);
+            Skill lore = SkillGenerator(age);
+
+            Leader leader = new Leader();
+            return leader;
+        }
+        
+        /// <summary>
+        /// Creator for a young leader, using player faction's gender dominance to decide gender. 
+        /// </summary>
+        /// <returns>A young (18-36) Leader of player any gender.</returns>
+        private Leader createYoungLeader()
+        {
+            Leader leader = new Leader();
+            return leader;
+        }
+
+        /// <summary>
+        /// A function for randomizing a Skill based on character's age. older characters are more likely to have
+        /// higher skills due to experience.
+        /// </summary>
+        /// <param name="age">Age of the Actor in question.</param>
+        /// <returns>A randomly determined skill level, with higher age more likely to generate higher value.</returns>
+        private Skill SkillGenerator( int age)
+        {
+            Random random = new Random();
+            int roll = 0;
+            // Base skill. From None(0) to Great(0)
+            roll += random.Next(0, 5);
+            // For every year above 18, the character has a chance to increase his current skill level, up to skill of
+            // Superior.
+            for ( int i = age; i > 18; i--)
+            {
+                if ( roll < 5 && random.Next(1, 101) > (90 + roll))
+                    roll++;
+            }
+            Skill skill = Skill.none;
+            return skill;
+        }
+
+        #endregion
+
+        #region UICalculations
+
+        // Most likely temporary calculations solely for UI sliders and calculations etc.
+
         private void calculateForests()
         {
-            forestLand_ = totalLand_ - pastures_ - wheatFields_ - barleyFields_ - ryeFields_;
+            forestLand = totalLand - pastures - wheatFields - barleyFields - ryeFields;
         }
 
         private void calculatePastures()
         {
-            pastures_ = totalLand_ - forestLand_ - wheatFields_ - barleyFields_ - ryeFields_;
+            pastures = totalLand - forestLand - wheatFields - barleyFields - ryeFields;
         }
         
         private void calculatePastureMax()
         {
-            pastureMax_ = pastures_+forestLand_;
+            pastureMax = pastures + forestLand;
         }
 
         private void calculateWheatMax()
         {
-            wheatMax_ = pastures_ + wheatFields_;
+            wheatMax = pastures + wheatFields;
         }
 
         private void calculateBarleyMax()
         {
-            barleyMax_ = pastures_ + barleyFields_;
+            barleyMax = pastures + barleyFields;
         }
 
         private void calculateRyeMax()
         {
-            ryeMax_ = pastures_ + ryeFields_;
+            ryeMax = pastures + ryeFields;
         }
 
         private void calculateInnerPatrolMax()
         {
-            innerPatrolMax_ = warriors_ - outerPatrol_;
+            innerPatrolMax = warriors - outerPatrol;
         }
 
         private void calculateOuterPatrolMax()
         {
-            outerPatrolMax_ = warriors_ - innerPatrol_;
+            outerPatrolMax = warriors - innerPatrol;
         }
 
         private void calculateWarriorMax()
         {
             // Placeholder formula. Maximum number of elite warriors is either current number or 1.25% of population, whichever is higher.
-            warriorsMax_ = Math.Max(warriors_,(int)(Math.Floor(population_ * 0.025)));
+            warriorsMax = Math.Max(warriors,(int)(Math.Floor(population * 0.025)));
         }
 
         private void calculateFarmers()
         {
-            farmers_ = population_ - children_ - warriors_ - crafters_ - traders_ - hunters_ - nobles_;
+            farmers = population - children - warriors - crafters - traders - hunters - nobles;
         }
 
         #endregion

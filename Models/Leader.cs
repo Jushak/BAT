@@ -17,10 +17,12 @@ namespace BAT_WPF.Models
     [Serializable()]
     public class Leader : Actor
     {
+        int age;
         // What faith the leader follows, if any.
-        string myFaith;
+        string faith;
+        char gender;
         // The main god(s) the leader follows.
-        List<String> myGods;
+        List<String> gods;
         // Skills possessed by the leader, with numerical value going from 0 (no skill) to 6 (heroic).
         Skill leadership;
         Skill bargaining;
@@ -31,11 +33,18 @@ namespace BAT_WPF.Models
         Skill plants;
         Skill lore;
 
+        #region Constructors
+
+        /// <summary>
+        /// Basic constructor for a Leader with pre-filled values.
+        /// </summary>
         public Leader()
             : base("TestLeader")
         {
-            myFaith = "";
-            myGods = new List<string>();
+            age = 18;
+            faith = "";
+            char gender = 'm';
+            gods = new List<string>();
             Skill leadership = Skill.mediocre;
             Skill bargaining = Skill.mediocre;
             Skill combat = Skill.mediocre;
@@ -46,17 +55,73 @@ namespace BAT_WPF.Models
             Skill lore = Skill.mediocre;
         }
 
+        /// <summary>
+        /// Constructor for creating a Leader for pre-existing data.
+        /// </summary>
+        /// <param name="leaderAge">Age of the Leader.</param>
+        /// <param name="leaderName">Name of the Leader.</param>
+        /// <param name="leaderFaith">Faith of the Leader.</param>
+        /// <param name="leaderGender">Gender of the Leader.</param>
+        /// <param name="LeaderGods">What gods the Leader worships, if any.</param>
+        /// <param name="leaderLeadership">Leadership-Skill of the Leader.</param>
+        /// <param name="leaderBargaining">Bargaining-Skill of the Leader.</param>
+        /// <param name="leaderCombat">Combat-Skill of the Leader.</param>
+        /// <param name="leaderCustom">Custom-Skill of the Leader.</param>
+        /// <param name="leaderMagic">Magic-Skill of the Leader.</param>
+        /// <param name="leaderAnimals">Animals-Skill of the Leader.</param>
+        /// <param name="leaderPlants">Plants-Skill of the Leader.</param>
+        /// <param name="leaderLore">Lore-Skill of the Leader.</param>
+        public Leader( int leaderAge, string leaderName, string leaderFaith, char leaderGender, List<string> LeaderGods,
+            Skill leaderLeadership, Skill leaderBargaining, Skill leaderCombat, Skill leaderCustom, Skill leaderMagic, 
+            Skill leaderAnimals, Skill leaderPlants, Skill leaderLore)
+            : base(leaderName)
+        {
+            age = leaderAge;
+            faith = leaderFaith;
+            gender = leaderGender;
+            gods = LeaderGods;
+            Skill leadership = leaderLeadership;
+            Skill bargaining = leaderBargaining;
+            Skill combat = leaderCombat;
+            Skill custom = leaderCustom;
+            Skill magic = leaderMagic;
+            Skill animals = leaderAnimals;
+            Skill plants = leaderPlants;
+            Skill lore = leaderLore;
+        } 
+
+        /// <summary>
+        /// Basic constructor for a Leader with just name given. Assumes 18 years old male Actor with all skills at None(0).
+        /// </summary>
+        /// <param name="name">Name of the Leader.</param>
+        public Leader( string name ) : base(name)
+        {
+            age = 18;
+            faith = "";
+            gender = 'm';
+            gods = new List<string>();
+            Skill leadership = Skill.none;
+            Skill bargaining = Skill.none;
+            Skill combat = Skill.none;
+            Skill custom = Skill.none;
+            Skill magic = Skill.none;
+            Skill animals = Skill.none;
+            Skill plants = Skill.none;
+            Skill lore = Skill.none;
+        }
+        #endregion
+
         #region Getters and setters
         public string MyFaith
         {
             get
             {
-                return myFaith;
+                return faith;
             }
 
             set
             {
-                myFaith = value;
+                faith = value;
             }
         }
 
@@ -64,12 +129,12 @@ namespace BAT_WPF.Models
         {
             get
             {
-                return myGods;
+                return gods;
             }
 
             set
             {
-                myGods = value;
+                gods = value;
             }
         }
 
@@ -174,6 +239,19 @@ namespace BAT_WPF.Models
             set
             {
                 lore = value;
+            }
+        }
+
+        public char Gender
+        {
+            get
+            {
+                return gender;
+            }
+
+            set
+            {
+                gender = value;
             }
         }
         #endregion

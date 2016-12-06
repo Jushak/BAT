@@ -23,20 +23,30 @@ namespace BAT_WPF.Views
     /// </summary>
     public partial class LoadingScreen : UserControl
     {
-        Border parentBorder_;
+        Border parentBorder;
         private DispatcherTimer loadingTimer;
         private string Loading = Application.Current.FindResource("loading") as string;
-        
+
+
+        /**
+         * Constructor for a LoadingScreen.
+         * @param parent    Link to the MainWindow's Border, used for transition.
+         */
         public LoadingScreen( Border parent)
         {
-            parentBorder_ = parent;
+            parentBorder = parent;
             InitializeComponent();
             loadingTimer = new DispatcherTimer();
             loadingTimer.Interval = TimeSpan.FromMilliseconds(500);
             loadingTimer.Tick += new EventHandler(loadingTimer_Tick);
             loadingTimer.Start();
+            // Initialize gameData.
+            GameData gameData = GameData.Instance;
         }
 
+        /**
+         * Event that "animates" the "loading"-text by looping between 0-3 trailing dots.
+         */
         void loadingTimer_Tick(object sender, EventArgs e)
         {
             int dotsCount = lblLoading.Content.ToString().Replace(Loading, string.Empty).Length;
