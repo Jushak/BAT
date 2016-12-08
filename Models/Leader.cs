@@ -33,6 +33,8 @@ namespace BAT_WPF.Models
         Skill plants;
         Skill lore;
 
+        string imageName;
+
         #region Constructors
 
         /// <summary>
@@ -53,6 +55,8 @@ namespace BAT_WPF.Models
             Skill animals = Skill.mediocre;
             Skill plants = Skill.mediocre;
             Skill lore = Skill.mediocre;
+
+            ImageName = "";
         }
 
         /// <summary>
@@ -71,9 +75,10 @@ namespace BAT_WPF.Models
         /// <param name="leaderAnimals">Animals-Skill of the Leader.</param>
         /// <param name="leaderPlants">Plants-Skill of the Leader.</param>
         /// <param name="leaderLore">Lore-Skill of the Leader.</param>
+        /// <param name="leaderImageName">Name of the image used to describe the Leader.</param>
         public Leader( int leaderAge, string leaderName, string leaderFaith, char leaderGender, List<string> LeaderGods,
             Skill leaderLeadership, Skill leaderBargaining, Skill leaderCombat, Skill leaderCustom, Skill leaderMagic, 
-            Skill leaderAnimals, Skill leaderPlants, Skill leaderLore)
+            Skill leaderAnimals, Skill leaderPlants, Skill leaderLore, string leaderImageName)
             : base(leaderName)
         {
             age = leaderAge;
@@ -88,6 +93,7 @@ namespace BAT_WPF.Models
             Skill animals = leaderAnimals;
             Skill plants = leaderPlants;
             Skill lore = leaderLore;
+            ImageName = leaderImageName;
         } 
 
         /// <summary>
@@ -108,6 +114,7 @@ namespace BAT_WPF.Models
             Skill animals = Skill.none;
             Skill plants = Skill.none;
             Skill lore = Skill.none;
+            ImageName = "";
         }
         #endregion
 
@@ -252,6 +259,19 @@ namespace BAT_WPF.Models
             set
             {
                 gender = value;
+            }
+        }
+
+        public string ImageName
+        {
+            get
+            {
+                return imageName;
+            }
+
+            set
+            {
+                imageName = value;
             }
         }
         #endregion

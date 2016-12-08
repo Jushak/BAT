@@ -288,6 +288,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\CouncilorFemale.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\CouncilorMale.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\MaleNames.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -201,6 +201,11 @@ namespace BAT_WPF.Models
             traders = 10;
             nobles = 30;
             farmers = 400;
+
+            for (int i = 0; i < 30; i++)
+                leaders.Add(createRandomLeader());
+            for (int i = 0; i < 7; i++)
+                councilors.Add(leaders[i]);
         }
         #endregion
 
@@ -819,9 +824,10 @@ namespace BAT_WPF.Models
         /// <returns>A randomly generated Leader belonging to the player faction.</returns>
         private Leader createRandomLeader()
         {
-            Random random = new Random();
+            GameData instance = GameData.Instance;
             // Generate age via "dice rolls". Age = 10+6d10, for variation between 18 and 70, with average of 43.
-            int age = 10 + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11) + random.Next(1, 11);
+            int age = 10 + instance.GetRandom(1, 11) + instance.GetRandom(1, 11) + instance.GetRandom(1, 11) + 
+                instance.GetRandom(1, 11) + instance.GetRandom(1, 11) + instance.GetRandom(1, 11);
 
             string faith = "testFaith";
             char gender = 'g';
@@ -829,7 +835,7 @@ namespace BAT_WPF.Models
             List<String> gods = new List<String>();
             gods.Add("testGod");             
             // Decide leader gender based on gender dominance
-            if ( random.Next(1,101) > genderDominance)
+            if (instance.GetRandom(1,101) > genderDominance)
                 gender = 'm';
             else
                 gender = 'f';
@@ -845,7 +851,9 @@ namespace BAT_WPF.Models
             Skill plant = SkillGenerator(age);
             Skill lore = SkillGenerator(age);
 
-            Leader leader = new Leader();
+            string image = instance.GenerateLeaderPicture(gender, age);
+
+            Leader leader = new Leader(age, name, faith, gender, gods, leadership, bargaining, combat, custom, magic, animals, plant, lore, image );
             return leader;
         }
         
@@ -867,15 +875,15 @@ namespace BAT_WPF.Models
         /// <returns>A randomly determined skill level, with higher age more likely to generate higher value.</returns>
         private Skill SkillGenerator( int age)
         {
-            Random random = new Random();
+            GameData instance = GameData.Instance;
             int roll = 0;
             // Base skill. From None(0) to Great(0)
-            roll += random.Next(0, 5);
+            roll += instance.GetRandom(0, 5);
             // For every year above 18, the character has a chance to increase his current skill level, up to skill of
             // Superior.
             for ( int i = age; i > 18; i--)
             {
-                if ( roll < 5 && random.Next(1, 101) > (90 + roll))
+                if ( roll < 5 && instance.GetRandom(1, 101) > (90 + roll))
                     roll++;
             }
             Skill skill = Skill.none;

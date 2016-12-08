@@ -42,7 +42,36 @@
                 </StackPanel>
             </DockPanel>
             <Grid Height="120" Width="740" Background="Beige">
-                <TextBlock FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Council portraits here!"/></TextBlock>
+                <StackPanel Name="CouncilorPanel" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor0" Width="80" Height="100" Source="{Binding Councilors[0].ImageName}" Margin="10,0,10,0" />
+                        <TextBlock Text="{Binding Councilors[0].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor1" Width="80" Height="100" Source="{Binding Councilors[1].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[1].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor2" Width="80" Height="100" Source="{Binding Councilors[2].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[2].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor3" Width="80" Height="100" Source="{Binding Councilors[3].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[3].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor4" Width="80" Height="100" Source="{Binding Councilors[4].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[4].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor5" Width="80" Height="100" Source="{Binding Councilors[5].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[5].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="Councilor6" Width="80" Height="100" Source="{Binding Councilors[6].ImageName}" Margin="10,0,10,0"/>
+                        <TextBlock Text="{Binding Councilors[6].Name}" Height="20" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </DockPanel>
 
